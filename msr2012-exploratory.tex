@@ -127,7 +127,7 @@
 % *** GRAPHICS RELATED PACKAGES ***
 %
 \ifCLASSINFOpdf
-  % \usepackage[pdftex]{graphicx}
+  \usepackage[pdftex]{graphicx}
   % declare the path(s) where your graphic files are
   % \graphicspath{{../pdf/}{../jpeg/}}
   % and their extensions so you won't have to specify these with
@@ -325,7 +325,7 @@
 
 % *** PDF, URL AND HYPERLINK PACKAGES ***
 %
-%\usepackage{url}
+\usepackage{url}
 % url.sty was written by Donald Arseneau. It provides better support for
 % handling and breaking URLs. url.sty is already installed on most LaTeX
 % systems. The latest version can be obtained at:
@@ -352,24 +352,19 @@
 %
 % paper title
 % can use linebreaks \\ within to get better formatting as desired
-\title{Bare Demo of IEEEtran.cls for IEEECS Conferences}
+\title{What Do Bug Repositories Tell Us About Software Development Workflow? An Exploratory Study}
 
 
 % author names and affiliations
 % use a multiple column layout for up to two different
 % affiliations
 
-\author{\IEEEauthorblockN{Authors Name/s per 1st Affiliation (Author)}
-\IEEEauthorblockA{line 1 (of Affiliation): dept. name of organization\\
-line 2: name of organization, acronyms acceptable\\
-line 3: City, Country\\
-line 4: Email: name@xyz.com}
-\and
-\IEEEauthorblockN{Authors Name/s per 2nd Affiliation (Author)}
-\IEEEauthorblockA{line 1 (of Affiliation): dept. name of organization\\
-line 2: name of organization, acronyms acceptable\\
-line 3: City, Country\\
-line 4: Email: name@xyz.com}
+\author{
+\IEEEauthorblockN{Rodrigo Souza and Christina Chavez}
+\IEEEauthorblockA{Software Engineering Labs\\
+Department of Computer Science - IM\\
+Federal University of Bahia (UFBA), Brazil \\
+\{rodrigo,flach\}@dcc.ufba.br}
 }
 
 % conference papers do not typically use \thanks and this command
@@ -408,13 +403,19 @@ line 4: Email: name@xyz.com}
 
 
 \begin{abstract}
-The abstract goes here. DO NOT USE SPECIAL CHARACTERS, SYMBOLS, OR MATH IN YOUR TITLE OR ABSTRACT.
+	\emph{Background}. Bug repositories have been increasingly studied with the objective of unveiling relevant knowledge about development practices and coordination tasks in software projects. Although there is plenty of publicly available repositories, researchers have raised issues regarding the accuracy of the data recorded in such repositories.
+
+	\emph{Aims}. In this paper, we investigate some bug repositories in depth in order understand the possible meanings behind the data (e.g., what does it mean to say that a bug has been ``verified''?) for each particular software project analyzed.
+
+	\emph{Method}. We have analyzed bugs from two large software projects, Eclipse and Netbeans. We have performed in-depth qualitative analysis within a small sample of bugs from both projects. Also, we have performed a broad textual analysis by applying latent Dirichlet allocation on all bug reports. Finally, we have used descriptive statistics in order to account for temporal (pre-release, post-release) and social (role of user: committer, fixer, reporter, end user) factors in the bug fixing workflow.
+
+	\emph{Results}. We have found that statuses mean distinct things in different projects. Also, the kind of activity associated with a certain status change is dependent on the roles of the participants and the stage of the software release cycle.
+	The results reinforce the threats involved in mining bug repositories and provide a way to estimate the inaccuracy in data. We recommend that future researchers use our method prior to mining bug repositories in order to select projects in which the meaning of the data records match their expectations.
 
 \end{abstract}
 
 \begin{IEEEkeywords}
-component; formatting; style; styling;
-
+software evolution; software development practices; bug repositories; empirical study;
 \end{IEEEkeywords}
 
 
@@ -428,27 +429,27 @@ component; formatting; style; styling;
 % creates the second title. It will be ignored for other modes.
 \IEEEpeerreviewmaketitle
 
+\include{contents}
 
-
-\section{Introduction}
-% no \IEEEPARstart
-This demo file is intended to serve as a ``starter file''
-for IEEE conference papers produced under \LaTeX\ using
-IEEEtran.cls version 1.7 and later.
-
-All manuscripts must be in English. These guidelines include complete descriptions of the fonts, spacing, and related information for producing your proceedings manuscripts. Please follow them and if you have any questions, direct them to the production editor in charge of your proceedings at Conference Publishing Services (CPS): Phone +1 (714) 821-8380 or Fax +1 (714) 761-1784.
-% You must have at least 2 lines in the paragraph with the drop letter
-% (should never be an issue)
-
-\subsection{Subsection Heading Here}
-Subsection text here.
-
-
-\subsubsection{Subsubsection Heading Here}
-Subsubsection text here.
-
-\section{Type style and Fonts}
-Wherever Times is specified, Times Roman or Times New Roman may be used. If neither is available on your system, please use the font closest in appearance to Times. Avoid using bit-mapped fonts if possible. True-Type 1 or Open Type fonts are preferred. Please embed symbol fonts, as well, for math, etc.
+% \section{Introduction}
+% % no \IEEEPARstart
+% This demo file is intended to serve as a ``starter file''
+% for IEEE conference papers produced under \LaTeX\ using
+% IEEEtran.cls version 1.7 and later.
+% 
+% All manuscripts must be in English. These guidelines include complete descriptions of the fonts, spacing, and related information for producing your proceedings manuscripts. Please follow them and if you have any questions, direct them to the production editor in charge of your proceedings at Conference Publishing Services (CPS): Phone +1 (714) 821-8380 or Fax +1 (714) 761-1784.
+% % You must have at least 2 lines in the paragraph with the drop letter
+% % (should never be an issue)
+% 
+% \subsection{Subsection Heading Here}
+% Subsection text here.
+% 
+% 
+% \subsubsection{Subsubsection Heading Here}
+% Subsubsection text here.
+% 
+% \section{Type style and Fonts}
+% Wherever Times is specified, Times Roman or Times New Roman may be used. If neither is available on your system, please use the font closest in appearance to Times. Avoid using bit-mapped fonts if possible. True-Type 1 or Open Type fonts are preferred. Please embed symbol fonts, as well, for math, etc.
 
 
 % An example of a floating figure using the graphicx package.
@@ -535,18 +536,18 @@ Wherever Times is specified, Times Roman or Times New Roman may be used. If neit
 
 
 
-\section{Conclusion}
-The conclusion goes here. this is more of the conclusion
-
-% conference papers do not normally have an appendix
-
-
-% use section* for acknowledgement
-\section*{Acknowledgment}
-
-
-The authors would like to thank...
-more thanks here
+% \section{Conclusion}
+% The conclusion goes here. this is more of the conclusion
+% 
+% % conference papers do not normally have an appendix
+% 
+% 
+% % use section* for acknowledgement
+% \section*{Acknowledgment}
+% 
+% 
+% The authors would like to thank...
+% more thanks here
 
 
 % trigger a \newpage just before the given reference
@@ -564,20 +565,20 @@ more thanks here
 % http://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/
 % The IEEEtran BibTeX style support page is at:
 % http://www.michaelshell.org/tex/ieeetran/bibtex/
-%\bibliographystyle{IEEEtran}
+\bibliographystyle{IEEEtran}
 % argument is your BibTeX string definitions and bibliography database(s)
-%\bibliography{IEEEabrv,../bib/paper}
+\bibliography{IEEEabrv,msr2012-exploratory}
 %
 % <OR> manually copy in the resultant .bbl file
 % set second argument of \begin to the number of references
 % (used to reserve space for the reference number labels box)
-\begin{thebibliography}{1}
-
-\bibitem{IEEEhowto:kopka}
-H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
-  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
-
-\end{thebibliography}
+% \begin{thebibliography}{1}
+% 
+% \bibitem{IEEEhowto:kopka}
+% H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
+%   0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+% 
+% \end{thebibliography}
 
 
 
