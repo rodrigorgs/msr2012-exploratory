@@ -1,8 +1,33 @@
+% http://wiki.eclipse.org/Bug_Reporting_FAQ
+%   when a test pass comes up a component owner can build a query that searched for resolved bugs
+%   After testing that the fix worked a resolved bug can be transitioned to verified, directly to closed, or in fact, reopened. 
+%   By searching for bugs with a Status of verified and a resolution of fixed developers can come up with release notes.
+%   Severity is assigned by a user and describes the level of impact the bug is having on them. Priority is assigned by the developer and describes the importance a developer places on fixing the bug.
+
 \begin{section}{Introduction}
 
-Software development is a complex activity that demands the coordination of many people, such as programmers, designers, and managers. Software development activities should be coordinated in order to deliver products with high quality and on schedule. Many practices and processes have been proposed in order to aid the software development, targeting at high quality, low cost, fast delivery, or a combination of these.
+Bug repositories (or bug tracking systems) have since a long time been used in software projects to support coordination among stakeholders. Such systems record discussion and progress of software evolution activities, such as corrective, perfective, and ... changes \cite{Antoniol2008}. Hence, bug repositories are an opportunity to researchers who intend to investigate issues related to the quality of the product and of the process of a software development team, which can give insights about the nature of software development itself.
 
-Several researchers are concerned with the validity of studies based on bug tracking systems \cite{Aranda2009,Bird2009,Nguyen2010,Ayari2007}. The main concern is the accuracy of the information that is reported in such systems.
+The information contained in bug repositories have been used in order to predict fault-proneness, to unveil developers' roles from data, to characterize transfer of work in software projects, and so on. Also, it has been used to investigate beliefs in software engineering related to software quality, such as the impact of developer turnover and of collective ownership on the occurrence of bugs.
+
+However, mining bug repositories has its own risks. Previous research has identified problems of missing data (e.g., rationale, traceability links between reported bug fixes and source code changes) and inaccurate data (e.g., misclassification of bugs) \cite{Aranda2009,Bird2009,Nguyen2010,Ayari2007}.
+
+\TODO why the VERIFIED status is so important?
+
+In summary, for researchers who intend to use data from bug tracking systems, it is not sufficient to understand the data fields in a bug report the way they are documented in the system's documentation. The research should also investigate whether the data fields are used often, whether they are used accordingly to the documentation, and even if the data fields are used consistently across the developers.
+
+In this paper, we investigate the status of a bug, a data field present in most bug tracking systems that reports the progress of the bug solving activity. In particular, we focus on the activity of verification of a fix. We are interested in answering the following exploratory research questions:
+
+\begin{itemize}
+	\item What activity is actually performed when a bug fix is marked as verified?
+	\item When is the verification performed (i.e., just after the fix, or is there a specific period for the verification of fixed bugs?)
+	\item How is the distribution of verification across developers?
+	\item Is there a dedicated team for QA?
+\end{itemize}
+
+For research question xx, qualitative of a small sample. 
+For research question xx, all bugs were considered.
+
 \end{section}
 
 \begin{section}{Background}
@@ -11,11 +36,11 @@ Several researchers are concerned with the validity of studies based on bug trac
   \begin{subsection}{Bug Tracking Systems}
 Bug workflow. Bugzilla. \cite{Bird2009}
 
-Reposit ́orios de bugs. Arquivam relat ́orios de defeitos e solicitac ̧ ̃oes de mudan ̧ca. Tais reposito ́rios ajudam os desenvolvedores a registrar, discutir e acompanhar a situa ̧ca ̃o de cada solicita ̧c ̃ao, desde a atribui ̧ca ̃o de uma solicita ̧ca ̃o a um desenvolvedor at ́e a verifica ̧c ̃ao da corre ̧c ̃ao ou melhoria. Exemplos incluem o Bugzilla, o Trac e o Jira.
+% Reposit ́orios de bugs. Arquivam relat ́orios de defeitos e solicitac ̧ ̃oes de mudan ̧ca. Tais reposito ́rios ajudam os desenvolvedores a registrar, discutir e acompanhar a situa ̧ca ̃o de cada solicita ̧c ̃ao, desde a atribui ̧ca ̃o de uma solicita ̧ca ̃o a um desenvolvedor at ́e a verifica ̧c ̃ao da corre ̧c ̃ao ou melhoria. Exemplos incluem o Bugzilla, o Trac e o Jira.
 
-Bug tracking systems are applications that allow users and developers of a software system to manage a list of bugs for the system. Usually, users and developers can report bugs, along with information such as steps to reproduce the bug and the operating system that was used. Then, developers choose bugs to fix and can report on the progress of the bug fixing activities, ask for clarification etc.
+Bug tracking systems allow users and developers of a software system to manage a list of bugs for the system. Usually, users and developers can report bugs, along with information such as steps to reproduce the bug, its severity, the operating system used etc. Developers choose bugs to fix and can report on the progress of the bug fixing activities, ask for clarification etc.
 
-One important feature of a bug that is recorded on bug tracking systems is its status. The status records the progress of the bug fixing activity, and, as such, provides data to software engineering studies. Figure \ref{fig:bugzilla} shows each status that can be recorded in Bugzilla, a popular bug tracking system, along with typical transitions between statuses, i.e., the workflow. Other systems present comparable status and transitions.
+One important feature of a bug that is recorded on bug tracking systems is its status. The status records the progress of the bug fixing activity, and, as such, provides data to software engineering studies. Figure \ref{fig:bugzilla} shows each status that can be recorded in Bugzilla, a popular bug tracking system, along with typical transitions between status values, i.e., the workflow. Other systems present comparable status values and transitions.
 
 \begin{figure}[ht]
 	\centering
@@ -24,50 +49,81 @@ One important feature of a bug that is recorded on bug tracking systems is its s
 	\label{fig:bugzilla}
 \end{figure}
 
-In the simplest cases, a bug is created and receive the status \texttt{UNCONFIRMED} or \texttt{NEW}. Next, it is assigned to a developer, and then it is resolved, possibly by fixing it with a patch on the source code. The solution is then verified by someone in the quality assurance team. If it passes the quality requirements, it is closed. If it doesn’t pass the quality requirements or if the solution only partially fixes the problem, the bug is reopened.
+In the simplest cases, a bug is created and receive the status \texttt{UNCONFIRMED} (if it was created by a regular user) or \texttt{NEW} (if it was created by a developer). Next, it is assigned to a developer, and then it is resolved, possibly by fixing it with a patch on the source code. The solution is then verified by someone in the quality assurance team. If it passes the quality requirements, it is closed and the patch is added to the next release. If it doesn’t pass the quality requirements or if the solution only partially fixes the problem, the bug is reopened.
+
+
 \end{subsection}
 
-  \begin{subsection}{The Eclipse Project}
-History. \\
-Recommendations about Bugzilla usage. Four-eyes principle.
+\begin{section}{Method}
+	
+\end{section}
 
-The Eclipse Project was created in 2001 by IBM and released into open source in 2004\footnote{\url{http://www.eclipse.org/org/}}, with focus on the creation of a extensible platform that supports the software development lifecycle. Today, it is maintained by its open source community, as well as by IBM employees and people from other organizations.
+\begin{section}{Data Extraction}
 
-The Eclipse Project consists of many subprojects, including the Platform project and dozens of plugins. Although each subproject is maintained by a distinct team and is relatively autonomous, all of them should follow a general, documented process. 
+	We have had access to Eclipse Bugzilla database from October, 2001 to June, 2010, in MySQL format. The data was made available as part of the Mining Software Repositories 2011 Challenge\footnote{\url{http://www.msrconf.org/msr-challenge.html}}.
 
-All subprojects use Bugzilla for bug reporting, and there are clear rules regarding the process of change in the software\footnote{\url{http://wiki.eclipse.org/Development_Resources/HOWTO/Bugzilla_Use}}. Here is an excerpt of a document in the Eclipse web site that explains the bug fixing process\footnote{\url{http://wiki.eclipse.org/Bug_Reporting_FAQ}} (emphasis added):
+	The database includes data from 155 Eclipse subprojects. However, we have discarded subprojects in which no bug was ever reopened, and subprojects with less than 50 reported bugs.
 
-\begin{quote}
-When a new bug is entered it begins life with a Status of either \textbf{Unconfirmed} for normal users or \textbf{New} for users with commit privileges. The bug is typically assigned to the component owner. The component owner will usually use a query of Status = Unconfirmed or New and Assigned to = me to browse what is essentially the component's inbox. She or he will assign bug reports to developers. Email will be generated to the developer (this part is configurable). (Note that the act of reassigning a bug to somebody changes its status to New). The developer may change unconfirmed bugs to new.
+	For the remaining 34 subprojects, we have selected only bugs that were verified until December 2009. The rationale is that if, within six months, a verified bug was not reopened, it probably will not be reopened after that and it is, thus, fully fixed.
 
-The assigned developer will “accept” the bug which will change its status to \textbf{Assigned}. After working on the bug the developer will mark the bug as \textbf{Resolved} and will select a resolution (Fixed, Invalid, Wontfix, Worksforme).
+\begin{subsection}{The Eclipse Project}
+	History. \\
+	Recommendations about Bugzilla usage. Four-eyes principle.
 
-Once a bug is resolved there are still a few states it can transition to. How you choose to use these states will be up to individual teams. In our example, when a test pass comes up a component owner can build a query that searched for resolved bugs. After testing that the fix worked a resolved bug can be transitioned to \textbf{verified}, directly to \textbf{closed}, or in fact, \textbf{reopened}. By searching for bugs with a Status of verified and a resolution of fixed developers can come up with release notes. A verified/fixed bug can then be transitioned to closed. And yes, closed bugs can be reopened if need be. As an added bonus other bug status can be transitioned through verified to closed as well. This gives developers the opportunity to test worksforme claims.
-\end{quote}
+	The Eclipse Project was created in 2001 by IBM and released into open source in 2004\footnote{\url{http://www.eclipse.org/org/}}, with focus on the creation of a extensible platform that supports the software development lifecycle. Today, it is maintained by its open source community, as well as by IBM employees and people from other organizations.
 
-There’s also a recommendation to follow the four eyes principle in the verification process (emphasis added):
+	The Eclipse Project consists of many subprojects, including the Platform project and dozens of plugins. Although each subproject is maintained by a distinct team and is relatively autonomous, all of them should follow a general, documented process. 
 
-\begin{quote}
-When a developer fixes the bug, the status is set to RESOLVED - FIXED, and it is assigned to another developer on the team to verify. \textbf{It is important that the verifier be a different person than the fixer} because the fixer is too close to the code and thus may not be as diligent at testing the corner cases.
-\end{quote}
+	All subprojects use Bugzilla for bug reporting, and there are clear rules regarding the process of change in the software\footnote{\url{http://wiki.eclipse.org/Development_Resources/HOWTO/Bugzilla_Use}}. Here is an excerpt of a document in the Eclipse web site that explains the bug fixing process\footnote{\url{http://wiki.eclipse.org/Bug_Reporting_FAQ}} (emphasis added):
 
-Finally, there are additional guidelines regarding the workflow:
+	\begin{quote}
+	When a new bug is entered it begins life with a Status of either \textbf{Unconfirmed} for normal users or \textbf{New} for users with commit privileges. The bug is typically assigned to the component owner. The component owner will usually use a query of Status = Unconfirmed or New and Assigned to = me to browse what is essentially the component's inbox. She or he will assign bug reports to developers. Email will be generated to the developer (this part is configurable). (Note that the act of reassigning a bug to somebody changes its status to New). The developer may change unconfirmed bugs to new.
 
-\begin{quote}
-	\begin{itemize}
-\item All bugs should be verified before the next integration build.
+	The assigned developer will “accept” the bug which will change its status to \textbf{Assigned}. After working on the bug the developer will mark the bug as \textbf{Resolved} and will select a resolution (Fixed, Invalid, Wontfix, Worksforme).
 
-\item When a committer verifies a fix, the status is changed to VERIFIED.
+	Once a bug is resolved there are still a few states it can transition to. How you choose to use these states will be up to individual teams. In our example, when a test pass comes up a component owner can build a query that searched for resolved bugs. After testing that the fix worked a resolved bug can be transitioned to \textbf{verified}, directly to \textbf{closed}, or in fact, \textbf{reopened}. By searching for bugs with a Status of verified and a resolution of fixed developers can come up with release notes. A verified/fixed bug can then be transitioned to closed. And yes, closed bugs can be reopened if need be. As an added bonus other bug status can be transitioned through verified to closed as well. This gives developers the opportunity to test worksforme claims.
+	\end{quote}
 
-\item When the project does a major release, the VERIFIED bugs are changed to CLOSED.
-	\end{itemize}
-\end{quote}
+	There’s also a recommendation to follow the four eyes principle in the verification process (emphasis added):
+
+	\begin{quote}
+	When a developer fixes the bug, the status is set to RESOLVED - FIXED, and it is assigned to another developer on the team to verify. \textbf{It is important that the verifier be a different person than the fixer} because the fixer is too close to the code and thus may not be as diligent at testing the corner cases.
+	\end{quote}
+
+	Finally, there are additional guidelines regarding the workflow:
+
+	\begin{quote}
+		\begin{itemize}
+	\item All bugs should be verified before the next integration build.
+
+	\item When a committer verifies a fix, the status is changed to VERIFIED.
+
+	\item When the project does a major release, the VERIFIED bugs are changed to CLOSED.
+		\end{itemize}
+	\end{quote}
 \end{subsection}
 
-  \begin{subsection}{The Netbeans Project}
-History. \\
-Recommendations for developers.
+\begin{subsection}{The Netbeans Project}
+	History. \\
+	Recommendations for developers.
 \end{subsection}
+
+\end{section}
+
+\begin{section}{Data Sampling}
+	Scripts to classify interesting cases.
+	Random sampling stratified by case.
+	
+\end{section}
+
+\begin{section}{Analysis}
+	grounded theory-style.
+	
+\end{section}
+
+\begin{section}{Conclusion}
+	
+\end{section}
 
 \begin{section}{Experimental Setup}
 
@@ -85,11 +141,6 @@ Analysis:
 - descriptive statistics
 \end{verbatim}
 
-We have had access to Eclipse Bugzilla database from October, 2001 to June, 2010, in MySQL format. The data was made available as part of the Mining Software Repositories 2011 Challenge\footnote{\url{http://www.msrconf.org/msr-challenge.html}}.
-
-The database includes data from 155 Eclipse subprojects. However, we have discarded subprojects in which no bug was ever reopened, and subprojects with less than 50 reported bugs.
-
-For the remaining 34 subprojects, we have selected only bugs that were verified until December 2009. The rationale is that if, within six months, a verified bug was not reopened, it probably will not be reopened after that and it is, thus, fully fixed.
 \end{section}
 
 \begin{section}{Results}

@@ -71,7 +71,7 @@
 % \documentclass[conference]{../sty/IEEEtran}
 
 
-
+\newcommand{\TODO}{\textbf{TODO:} }
 
 
 % Some very useful LaTeX packages include:
@@ -352,7 +352,7 @@
 %
 % paper title
 % can use linebreaks \\ within to get better formatting as desired
-\title{What Do Bug Repositories Tell Us About Software Development Workflow? An Exploratory Study}
+\title{Verification of Bug Fixes: What Does it Really Mean?}
 
 
 % author names and affiliations
@@ -403,21 +403,14 @@ Federal University of Bahia (UFBA), Brazil \\
 
 
 \begin{abstract}
-	\emph{Background}. Bug repositories have been increasingly studied with the objective of unveiling relevant knowledge about development practices and coordination tasks in software projects. Although there is plenty of publicly available repositories, researchers have raised issues regarding the accuracy of the data recorded in such repositories.
-
-	\emph{Aims}. In this paper, we investigate some bug repositories in depth in order understand the possible meanings behind the data (e.g., what does it mean to say that a bug has been ``verified''?) for each particular software project analyzed.
-
-	\emph{Method}. We have analyzed bugs from two large software projects, Eclipse and Netbeans. We have performed in-depth qualitative analysis within a small sample of bugs from both projects. Also, we have performed a broad textual analysis by applying latent Dirichlet allocation on all bug reports. Finally, we have used descriptive statistics in order to account for temporal (pre-release, post-release) and social (role of user: committer, fixer, reporter, end user) factors in the bug fixing workflow.
-
-	\emph{Results}. We have found that statuses mean distinct things in different projects. Also, the kind of activity associated with a certain status change is dependent on the roles of the participants and the stage of the software release cycle.
-	The results reinforce the threats involved in mining bug repositories and provide a way to estimate the inaccuracy in data. We recommend that future researchers use our method prior to mining bug repositories in order to select projects in which the meaning of the data records match their expectations.
-
+	Data from bug repositories have been used to enable inquiries about software product and process quality. Unfortunately, such repositories often contain inaccurate, inconsistent, or missing data, which can originate misleading results. 
+	In this paper, we investigate qualitatively the reported status of bug reports from the projects Eclipse and Netbeans, in special the VERIFIED status, corresponding to the verification that a  bug fix is appropriate. We show that the VERIFIED status is used in a variety of distinct ways, not always consistent with the traditional definition of verification.
+	Future research should take the multiple meanings of VERIFIED into account when deriving conclusions based on the status field of bug reports.
 \end{abstract}
 
 \begin{IEEEkeywords}
-software evolution; software development practices; bug repositories; empirical study;
+mining software repositories; bug tracking systems; software development practices; empirical study.
 \end{IEEEkeywords}
-
 
 % For peer review papers, you can put extra information on the cover
 % page as needed:
