@@ -139,12 +139,63 @@ In order to answer our exploratory research questions, we followed the following
 		\item In the NetBeans subprojects that were analyzed, it was common that the reporter also verified the fix. In some bugs, this was necessary since the developer was not able to reproduce the bug.
 		\item Often, the fixer verifies the bug just after marking it as fixed.
 		\item Sometimes, several old bugs are marked as VERIFIED at the same time.
-		\item In Eclipse/Platform, it is common that the fixer requests someone else to verify the fix.
+		\item In Eclipse/Platform, it is common that the fixer requests someone else to verify the fix (``Please verify, Tom'').
 		\item In Eclipse/EMF, bug #249436, one developer rewrites the patch submitted by other developer.
 		\item In Eclipse/EMF, bug #269789, a test case is used to assess the proposed fix.
 	\end{itemize}
 	
+	
+\begin{subsection}{RQ1: How Are Bugs Verified?}
+	
+	We analyzed cases in which the bug is fixed, the fixer asks someone else to verify the fix, and then the bug is reopened.
+
+	Findings: ...
+	
+\end{subsection}
+
+\begin{subsection}{RQ2: When Are Bugs Verified?}
+	
+\end{subsection}
+
+\begin{subsection}{RQ3: Who Verifies Bugs?}
+	
+	We counted the number of times each developer verified or fixed a bug. We consider that, if a developer is primarily concerned with quality assurance, then s/he verifies much more bugs that s/he fixes.
+	
+	We defined ratio as ...
+	
+	The verified/fixed ratio for the four projects is shown on Table XXX.
+	
+\begin{verbatim}
+	*** eclipse-platform 
+	Verifiers: 4(2.38095238095238%) = 1.08523937083591% of verifications
+	Fixers: 30 -- 17.8571428571429%
+	Total developers: 168 
+
+	*** eclipse-emf 
+	Verifiers: 0(0%) = 0% of verifications
+	Fixers: 4 -- 30.7692307692308%
+	Total developers: 13 
+
+	*** netbeans-profiler 
+	Verifiers: 3(21.4285714285714%) = 89.9688958009331% of verifications
+	Fixers: 2 -- 14.2857142857143%
+	Total developers: 14 
+
+	*** netbeans-versioncontrol 
+	Verifiers: 5(20.8333333333333%) = 93.2291666666667% of verifications
+	Fixers: 6 -- 25%
+	Total developers: 24
+\end{verbatim}
+	
+	Clearly, in NetBeans the ``verifier'' role is more pronounced. In the subprojects analyzed, approximately 20\% of the developers focus on the verification activity, and they perform about 90\% of the verifications.
+	
+	In the Eclipse subprojects, however, such role is not so clear. In EMF, there are no ``verifiers''. That does not mean much because, as we discovered earlier, the VERIFIED status does not correspond to the verification activity. In the case of Eclipse/Platform, only 2\% of the developers are verifiers, and they contribute only to 1\% of the verifications.
+	
+\end{subsection}
+
 \end{section}
+
+
 
 \begin{section}{Conclusion}
 	
