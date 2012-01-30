@@ -96,6 +96,8 @@ While mining bug repositories, one cannot assume that the VERIFIED status compri
 	% \item When is the verification performed (i.e., just after the fix, or is there a specific period for the verification of fixed bugs?)
 	% \item Who performs the verification?
 
+  \TODO the method has changed. Please ignore this section.
+
 In order to answer our exploratory research questions, we followed the following method:
 
 \begin{enumerate}
@@ -126,7 +128,7 @@ In order to answer our exploratory research questions, we followed the following
 
 \begin{subsection}{Sampling of Bug Reports}
 	
-	In order to obtain insight about the research questions, we read a sample of bug reports from both projects. For each project, two subprojects were chosen randomly among the projects with most verified bugs, resulting in the following subprojects: Eclipse/Platform, Eclipse/EMF, Netbeans/profiler, Netbeans/versioncontrol. We have sampled 20 bug reports for each subproject, totalizing 80 bug reports.
+	In order to obtain insight about the research questions, we read a sample of bug reports from both projects. For each project, two subprojects were chosen randomly among the projects with most verified bugs, resulting in the following subprojects: Eclipse/Platform, Eclipse/EMF, Netbeans/platform, Netbeans/versioncontrol. We have sampled 20 bug reports for each subproject, totalizing 80 bug reports.
 	
 	\TODO this sampling was made just for the preliminary, qualitative analysis. Maybe we should describe preliminary analysis as an unstructured inquiry (instead of detailing the methods for it).
 	
@@ -140,14 +142,18 @@ In order to answer our exploratory research questions, we followed the following
 	Some insights were gained in this step, partially answering the who, when, and how questions:
 	
 	\begin{itemize}
-		\item [how] In some projects, the status VERIFIED does not correspond to software verification. In Eclipse/EMF, for example, it means that the fix is available in a build that is promoted on the project website\footnote{\url{http://wiki.eclipse.org/Modeling_PMC_Meeting,_2007-10-16}}.
+		\item [how] In some projects, the status VERIFIED does not correspond to software verification. In Eclipse/EMF, for example, it means that the fix is available in a build that is promoted on the project website\footnote{\url{http://wiki.eclipse.org/Modeling_PMC_Meeting,_2007-10-16} (between releases 3.3.1 and 3.3.1.1)}. Further evidence: bug #254489 ``Please do not change the state of the bugs since the status verified fixed should be only there when we publish a new build. :-)''
 		\item [(who)] In the NetBeans subprojects that were analyzed, it was common that the reporter also verified the fix. In some bugs, this was necessary since the developer was not able to reproduce the bug.
 		\item [(who, when)] Often, the fixer verifies the bug just after marking it as fixed.
 		\item [(when)] Sometimes, several old bugs are marked as VERIFIED at the same time.
-		\item [(how?)] In Eclipse/Platform, it is common that the fixer requests someone else to verify the fix (``Please verify, Tom'').
+		\item [(how?)] In both Eclipse and NetBeans, it is common that the fixer requests someone else to verify the fix (``Please verify, Tom'').
 		\item [(how)] In Eclipse/EMF, bug #249436, one developer rewrites the patch submitted by other developer.
 		\item [(how)] In Eclipse/EMF, bug #269789, a test case is used to assess the proposed fix.
+		\item [(how)] Eclipse/Platform, bug #210533: ``Verified by code inspection''.
 	\end{itemize}
+	
+	\TODO: ``Verified in/with [build]'', ``Verified by/through [verification technique]''.
+	
 \end{subsection}	
 	
 \begin{subsection}{RQ1: How Are Bugs Verified?}
@@ -159,6 +165,41 @@ In order to answer our exploratory research questions, we followed the following
 \end{subsection}
 
 \begin{subsection}{RQ2: When Are Bugs Verified?}
+	
+	In order to answer whether there is a verification phase for the projects analyzed, we plotted the cumulative number of verifications along the lifetime of each project, as shown in Figure XXX, in red. The vertical lines represent release dates for each version. As a basis for comparison, the number of bug fixes is also plotted, in black. 
+
+	We found evidence of a verification phase for Eclipse/Platform. In this project, verifications appear to be performed in bursts, with periods of intense activity separated by about 6 to 7 weeks of low or no activity. By taking a closer look in the period between the releases 3.5 and 3.6, it is clear that the periods of intense verification activity occur just before the milestones leading to 3.6.
+	
+	No such pattern was found for Netbeans' subprojects.
+	
+	% We did not find evidence of a verification phase preceding each release. Unlike the bug fixing activity, the pace of verification is not steady, either. Instead, verification appears to be performed in bursts, which a couple of weeks with low or no activity, followed by a couple of days of intense verification activity.
+	
+	% In Eclipse, milestones are roughly 6 weeks apart from each other. Milestones are considered good enough for end users\footenote{\url{http://eclipsecon.org/2005/presentations/econ2005-eclipse-way.pdf}} The milestones are, in general, marked by a steep accent in verification just before the milestone date.
+	% Weekly integration builds. Nightly builds. Build quality verified by automatic unit tests. 20k unit tests.
+	
+	%%%%%%%%%%%%%%%%%%%%%%
+	
+	The first thing that comes to attention are ``cliff walls'', points in time when a large amount of bugs are verified, represented by steep, almost vertical portions of the plotted line. They appear in Eclipse/EMF and Netbeans/Platform. In Netbeans/Platform, all verifications in the cliff wall preceding version 5.5 share the same message: ``Verification of old issues''. For Eclipse/EMF, the message is ``Move to verified as per bug 206558'', which refers to the task of changing bugs marked as FIXED to VERIFIED.
+	
+	Cliff walls represent a change in the development process, and the mass verification is needed in order to leverage useful features from Bugzilla (e.g., looking for verified bugs in order to aid the writing of release notes).
+	
+	Because of cliff walls, extra care must be taken before doing any analysis that relies on the VERIFIED status. In such situations, the VERIFIED status is applied blindly, with no software verification being actually performed. Because cliff walls contain a large amount of bugs, they are likely to bias the results of analyses.
+	
+	%%%%%%%%%%%%%%%%%%%%%%
+	
+	% Some projects have ``cliff walls'' [reference graphic]. Taking a closer look, the VERIFIED status was used sparingly in Eclipse/EMF, but, suddenly, a huge number of bugs is verified and, after that, bugs tend to be verified frequently. It represents a change in the development process, and the mass verification is needed in order to leverage useful features from Bugzilla (e.g., looking for verified bugs in order to aid the writing of release notes).
+	
+	% If one is to build a predictive model based on verifications, the cliff walls should be ignored, as they represent unusual activity that has no connection with software verification whatsoever.
+	
+	% By visualizing release dates, we tried to assess if there is such a thing as a ``verification phase'', i.e., if verifications are frequent only on a period before the release. There was no evidence of such phase on Eclipse subprojects (TODO: look for patterns in NetBeans).
+	
+	% However, we found also that, different to what occur with fixes, verifications are not steady, constant. In Eclipse/Platform, for instance, there are periods of 3 to 5 weeks of few verifications, followed by a couple of days with intense verification activity (``mini cliff walls'', if you wish...)
+	% 
+	% The verifications of NetBeans/versioncontrol are more steady, continuous. Also, they seem to reflect well the FIXED curve.
+	
+	% TODO (future): are verifications more common on mondays on netbeans-versioncontrol?
+	
+	% TODO (future): how much time does it take between RESOLVED (FIXED) and VERIFIED?
 	
 \end{subsection}
 
@@ -172,29 +213,35 @@ In order to answer our exploratory research questions, we followed the following
 	
 \begin{verbatim}
 *** eclipse-platform 
-Verifiers: 4(2.38095238095238%) = 1.08523937083591% of verifications
-Fixers: 30 -- 17.8571428571429%
+Verifiers: 4 (2.4%)
+  1.1% of verifications
+Fixers: 30 (17.9%)
 Total developers: 168 
 
 *** eclipse-emf 
-Verifiers: 0(0%) = 0% of verifications
-Fixers: 4 -- 30.7692307692308%
+Verifiers: 0 (0.0%)
+  0.0% of verifications
+Fixers: 4 (30.8%)
 Total developers: 13 
 
-*** netbeans-profiler 
-Verifiers: 3(21.4285714285714%) = 89.9688958009331% of verifications
-Fixers: 2 -- 14.2857142857143%
-Total developers: 14 
+*** netbeans-platform 
+Verifiers: 5 (21.7%)
+  93.3% of verifications
+Fixers: 6 (26.1%)
+Total developers: 23 
 
 *** netbeans-versioncontrol 
-Verifiers: 5(20.8333333333333%) = 93.2291666666667% of verifications
-Fixers: 6 -- 25%
-Total developers: 24
+Verifiers: 5 (20.8%)
+  93.2% of verifications
+Fixers: 6 (25.0%)
+Total developers: 24 
 \end{verbatim}
 	
 	In NetBeans it is possible to infer the existence of a QA team, composed by approximately 20\% of the developers, that performs about 90\% of all verifications.
 	
-	In the Eclipse subprojects, there is no evidence of a dedicated QA team. In Eclipse/EMF no developer focus specifically on verification (it should be remembered that verification in EMF has a peculiar meaning). In Eclipse/Platform, only 2\% of the developers focus on verification tasks, however, they contribute only to 1\% of the verifications.
+	In the Eclipse subprojects, there is no evidence of a dedicated QA team. In Eclipse/EMF no developer focus specifically on verification. In Eclipse/Platform, only 2\% of the developers focus on verification tasks, however, they contribute only to 1\% of the verifications.
+	
+% (it should be remembered that verification in EMF has a peculiar meaning)	
 	
 \end{subsection}
 
