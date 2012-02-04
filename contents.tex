@@ -18,7 +18,7 @@
 
 \begin{section}{Introduction}
 
-Bug repositories (or bug tracking systems) have for a long time been used in software projects to support coordination among stakeholders. Such systems record discussion and progress of software evolution activities, such as bug fixing and software verification. Hence, bug repositories are an opportunity to researchers who intend to investigate issues related to the quality of both the product and the process of a software development team.
+Bug repositories have for a long time been used in software projects to support coordination among stakeholders. They record discussion and progress of software evolution activities, such as bug fixing and software verification. Hence, bug repositories are an opportunity for researchers who intend to investigate issues related to the quality of both the product and the process of a software development team.
 %, or even issues regarding the nature of software development itself.
 
 % The information contained in bug repositories has been used in order to predict fault-proneness, to unveil developers' roles from data, to characterize transfer of work in software projects, and so on. Also, it has been used to investigate beliefs in software engineering related to software quality, such as the impact of developer turnover and of collective ownership on the occurrence of bugs.
@@ -33,7 +33,7 @@ However, mining bug repositories has its own risks. Previous research has identi
 
 	\begin{itemize}
 		\item \textbf{How} is the verification performed: are there performed ad hoc tests, automated tests, code inspection?
-		\item \textbf{Who} performs the verification: is there a dedicated team for QA? 
+		\item \textbf{Who} performs the verification: is there a QA (quality assurance) team? 
 		\item \textbf{When} is the verification performed: is it performed just after the fix, or is there a verification phase?
 		% \item How is the distribution of verification across developers?
 		% \item Is there a dedicated team for QA?
@@ -55,11 +55,13 @@ However, mining bug repositories has its own risks. Previous research has identi
 
 % Reposit ́orios de bugs. Arquivam relat ́orios de defeitos e solicitac ̧ ̃oes de mudan ̧ca. Tais reposito ́rios ajudam os desenvolvedores a registrar, discutir e acompanhar a situa ̧ca ̃o de cada solicita ̧c ̃ao, desde a atribui ̧ca ̃o de uma solicita ̧ca ̃o a um desenvolvedor at ́e a verifica ̧c ̃ao da corre ̧c ̃ao ou melhoria. Exemplos incluem o Bugzilla, o Trac e o Jira.
 
-Bug tracking systems allow users and developers of a software project to manage a list of bugs for the project. Usually, users and developers can report bugs, along with information such as steps to reproduce the bug, its severity and the operating system used. Developers choose bugs to fix and can report on the progress of the bug fixing activities, ask for clarification, discuss causes for the bug etc.
+Bug tracking systems allow users and developers of a software project to manage a list of bugs for the project, along with information such as steps to reproduce the bug, its severity and the operating system used. Developers choose bugs to fix and can report on the progress of the bug fixing activities, ask for clarification, discuss causes for the bug etc.
 
-In this research, we focus on Bugzilla, an open source bug tracking system used by notable software projects such as Eclipse, Mozilla, Linux Kernel, Open Office, Apache, and companies such as NASA and Facebook\footnote{Complete list available at http://www.bugzilla.org/installation-list/.}. The general concepts from Bugzilla should apply to most other bug tracking systems.
+In this research, we focus on Bugzilla, an open source bug tracking system used by notable software projects such as Eclipse, Mozilla, Linux Kernel, NetBeans, Apache, and companies such as NASA and Facebook\footnote{Complete list available at http://www.bugzilla.org/installation-list/.}. The general concepts from Bugzilla should apply to most other bug tracking systems.
 
-One important feature of a bug that is recorded on bug tracking systems is its status. The status records the progress of the bug fixing activity, and, as such, provides data to software engineering studies. Figure \ref{fig:bugzilla} shows each status that can be recorded in Bugzilla, along with typical transitions between status values, i.e., the workflow.
+One important feature of a bug that is recorded on bug tracking systems is its status. The status records the progress of the bug fixing activity.
+%, and, as such, provides data to software engineering studies
+Figure \ref{fig:bugzilla} shows each status that can be recorded in Bugzilla, along with typical transitions between status values, i.e., the workflow.
 
 \begin{figure}[ht]
 	\centering
@@ -68,24 +70,29 @@ One important feature of a bug that is recorded on bug tracking systems is its s
 	\label{fig:bugzilla}
 \end{figure}
 
-In the simplest cases, a bug is created and receive the status \UNCONFIRMED\ (if it was created by a regular user) or \NEW\ (if it was created by a developer). Next, it is \ASSIGNED\ to a developer, and then it is \RESOLVED, possibly by fixing it with a patch on the source code. The solution is then \VERIFIED\ by someone in the quality assurance team. If it passes the quality requirements, it is \CLOSED\ when the next release of the software is released. If it does not pass the quality requirements or if the solution only partially fixes the problem, the bug is \REOPENED.
+In the simplest cases, a bug is created and receive the status \UNCONFIRMED\ (if it was created by a regular user) or \NEW\ (if it was created by a developer). Next, it is \ASSIGNED\ to a developer, and then it is \RESOLVED, possibly by fixing it with a patch on the source code. The solution is then \VERIFIED\ by someone in the quality assurance team, if it is adequate, or otherwise it is \REOPENED. When a version of the software is released, all \VERIFIED\ bugs are \CLOSED.
+
+% If it passes the quality requirements, it is \CLOSED\ when the next release of the software is released. If it does not pass the quality requirements or if the solution only partially fixes the problem, the bug is \REOPENED.
 
 % Roles: reporter, fixer, verifier, reopener, closer.
 
 % bugs with status \VERIFIED\ are used to write the release notes / change log.
 
-In order to understand the bug fixing process of a software team, however, it should be possible to know what activities are performed upon change of status. 
+% In order to understand the bug fixing process of a software team, however, it should be possible to know what activities are performed upon change of status. 
 %For example, what steps are made before changing the status of a bug to RESOLVED (FIXED)? Is the patch applied to the version control system? Is it presented as diff file attached to the bug report? Is there a build available to end users containing the patch (e.g., a nightly build)? The documentation for Bugzilla does not prescribe specific activities for marking a bug as RESOLVED, relegating instead this decision to each software project.
 %
 %Similarly, w
-What do developers do before marking a bug as \VERIFIED? Bugzilla documentation states that, when a bug is \VERIFIED\, it means that ``QA [quality assurance team] has looked at the bug and the resolution and agrees that the appropriate resolution has been taken''\footnote{\url{https://landfill.bugzilla.org/bugzilla-3.6-branch/page.cgi?id=fields.html}}. Again, the definition is broad, although it assumes the existence of a QA team.
+%What do developers do before marking a bug as \VERIFIED? 
+Bugzilla documentation states that, when a bug is \VERIFIED, it means that ``QA [quality assurance team] has looked at the bug and the resolution and agrees that the appropriate resolution has been taken''\footnote{\url{https://landfill.bugzilla.org/bugzilla-3.6-branch/page.cgi?id=fields.html}}. It does not specify how developers should look at the resolution (e.g., by looking at the source code, or by running a patched version of the software). 
 
-The developer documentation for both Eclipse and NetBeans are unclear about how the verification of a bug fix is performed. So, what forms of  software verification are they used in the verification process of these projects?
+% Again, the definition is broad, although it assumes the existence of a QA team.
+
+% The developer documentation for both Eclipse and NetBeans are unclear about how the verification of a bug fix is performed. So, what forms of  software verification are they used in the verification process of these projects?
 % In some parts they mention running unit tests, and running a patched version of the software and try to reproduce the bug.
 
-Software verification techniques are classified in static and dynamic \cite{Sommerville1995}. Static techniques include source code inspection, automated static analysis, and formal verification. Dynamic techniques, or testing, involve executing the software system under certain conditions and comparing its actual behavior with the intended behavior. Testing can be done in an improvised way (ad hoc testing), or can be compiled in a list of test cases, which can then be automated (e.g., as unit tests).
+Software verification techniques are classified in static and dynamic \cite{Sommerville1995}. Static techniques include \emph{source code inspection}, automated \emph{static analysis}, and \emph{formal verification}. Dynamic techniques, or testing, involve executing the software system under certain conditions and comparing its actual behavior with the intended behavior. Testing can be done in an improvised way (\emph{ad hoc testing}), or it can be structured in a list of test cases, leading to \emph{automated testing}.
 
-While mining bug repositories, one cannot assume that the \VERIFIED\ status comprises all forms of software verification. Also, one cannot rely on the information provided by the bug tracking system or the developer documentation for a project, since it can be too generic to be useful. Such information can only be assessed by taking a closer look on actual bug reports.
+% While mining bug repositories, one cannot assume that the \VERIFIED\ status comprises all forms of software verification. Also, one cannot rely on the information provided by the bug tracking system or the developer documentation for a project, since it can be too generic to be useful. Such information can only be assessed by taking a closer look on actual bug reports.
 
 % O bug não se manifesta após a aplicação da solução.
 % A solução não gera novos bugs.
