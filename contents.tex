@@ -40,8 +40,6 @@ However, mining bug repositories has its own risks. Previous research has identi
 	\end{itemize}
 
 	The next section contains some background information about bug tracking systems and software verification. In Section \ref{sec:methods}, the data and methods used to investigate the research questions are presented. Then, in Section \ref{sec:results}, the results are exposed and discussed. Finally, Section \ref{sec:conclusion} presents some concluding remarks.
-	
-% \TODO why the VERIFIED status is so important?
 
 % In summary, for researchers who intend to use data from bug tracking systems, it is not sufficient to understand the data fields in a bug report the way they are documented in the system's documentation. The research should also investigate whether the data fields are used often, whether they are used accordingly to the documentation, and even if the data fields are used consistently across the developers.
 
@@ -72,9 +70,9 @@ One important feature of a bug that is recorded on bug tracking systems is its s
 
 In the simplest cases, a bug is created and receive the status \UNCONFIRMED\ (if it was created by a regular user) or \NEW\ (if it was created by a developer). Next, it is \ASSIGNED\ to a developer, and then it is \RESOLVED, possibly by fixing it with a patch on the source code. The solution is then \VERIFIED\ by someone in the quality assurance team. If it passes the quality requirements, it is \CLOSED\ when the next release of the software is released. If it does not pass the quality requirements or if the solution only partially fixes the problem, the bug is \REOPENED.
 
-% \TODO Roles: reporter, fixer, verifier, reopener, closer.
+% Roles: reporter, fixer, verifier, reopener, closer.
 
-% \TODO bugs with status \VERIFIED\ are used to write the release notes / change log.
+% bugs with status \VERIFIED\ are used to write the release notes / change log.
 
 In order to understand the bug fixing process of a software team, however, it should be possible to know what activities are performed upon change of status. 
 %For example, what steps are made before changing the status of a bug to RESOLVED (FIXED)? Is the patch applied to the version control system? Is it presented as diff file attached to the bug report? Is there a build available to end users containing the patch (e.g., a nightly build)? The documentation for Bugzilla does not prescribe specific activities for marking a bug as RESOLVED, relegating instead this decision to each software project.
@@ -103,7 +101,7 @@ While mining bug repositories, one cannot assume that the \VERIFIED\ status comp
 
 \end{section}
 
-\begin{section}{Method} \label{sec:method}
+\begin{section}{Method} \label{sec:methods}
 
 	% \item How is the verification actually performed?
 	% \item When is the verification performed (i.e., just after the fix, or is there a specific period for the verification of fixed bugs?)
@@ -148,7 +146,6 @@ While mining bug repositories, one cannot assume that the \VERIFIED\ status comp
 	
 	% In order to obtain insight about the research questions, we read a sample of bug reports from both projects. For each project, two subprojects were chosen randomly among the projects with most verified bugs, resulting in the following subprojects: Eclipse/Platform, Eclipse/EMF, Netbeans/platform, Netbeans/versioncontrol. We have sampled 20 bug reports for each subproject, totalizing 80 bug reports.
 	% 
-	% \TODO this sampling was made just for the preliminary, qualitative analysis. Maybe we should describe preliminary analysis as an unstructured inquiry (instead of detailing the methods for it).
 	
 \end{subsection}
 
@@ -161,9 +158,9 @@ While mining bug repositories, one cannot assume that the \VERIFIED\ status comp
 	\begin{itemize}
 		\item automated testing: testcase, test case, unit test, automated test, test result, run the test, test run;
 		\item source code inspection: inspecting, inspection, look at the code, looking at the source;
-		\item ad hoc testing: verified by running, verified by [verb]ing;
+		\item ad hoc testing: verified by running, verified by ...ing;
 		\item automated static analysis: findbugs, checkstyle, static code, static analys;
-		\item formal testing: formal test, format verif.
+		\item formal testing: formal test, formal verif.
 	\end{itemize}
 	
 	% The classification script is smart enough to ignore negative assertions, such as ``did not run the test''.	
@@ -210,30 +207,57 @@ While mining bug repositories, one cannot assume that the \VERIFIED\ status comp
 % 		\item [(how)] (OK) Eclipse/Platform, bug #210533: ``Verified by code inspection''.
 % 	\end{itemize}
 % 	
-% 	\TODO: ``Verified in/with [build]'', ``Verified by/through [verification technique]''.
-% 	
 % \end{subsection}	
 	
 \begin{subsection}{How Are Bugs Verified?}
 
   % To identify the verification techniques used by the projects, we looked at messages written by developers when they mark a bug as VERIFIED (meaning that the bug fix is appropriate) or REOPENED (meaning that some problem was found in the proposed fix). First, we have read some messages, non-systematically, to get some idea of what is said in theses messages and how it is said.
 
-  Most verification comments do not provide any clue about the verification technique used. Many comments just state that the bug fix was verified, optionally informing the build used to verify the fix. 
+  Most verification comments do not provide any clue about the verification technique used. Most often, developers just state that the bug fix was verified, sometimes informing the build used to verify the fix. 
 
-	\TODO table
+	Table \ref{tab:how} shows, for each subproject, the number of comments associated with a bug being marked as \VERIFIED\ or \REOPENED\ that refers to a particular verification technique. No references to formal verification or static analysis were found; therefore, these techniques are not shown on the table.
+
+	\begin{table}
+		\begin{center}
+		\caption{Verification techniques for all four subprojects.}
+		\begin{tabular}{l|r|r|r}
+			% \toprule
+			\textbf{\centering Project} & 
+			\textbf{\centering Testing} & 
+			\textbf{\centering Inspection} & 
+			\textbf{\centering Ad Hoc} & 
+			\hline
+			Eclipse/Platform        & 260 (1.1\%) & 524 (2.2\%) & 74 (0.3\%) \\
+			Eclipse/EMF             & 27 (0.7\%) & 2 (0.1\%) & 0 (0.0\%) \\
+			NetBeans/Platform       & 94 (0.6\%) & 5 (0.0\%) & 0 (0.0\%) \\
+			NetBeans/VersionControl & 4 (0.1\%) & 1 (0.0\%) & 0 (0.0\%) 
+			% \bottomrule
+		\end{tabular}
+		\end{center}
+		
+		\label{tab:how}
+	\end{table}
+
+	In Eclipse/Platform, less than 4\% of the comments referenced the verification technique that was used; for the other projects, less than 1\% of the comments contained such references. Such low proportion reveals how difficult it is to infer the verification technique that was applied using only data from bug repositories. This is probably tacit knowledge that can only be extracted by asking the developers themselves.
+	
+	In all subprojects, comments suggest the use of automated testing and code inspection in the verification process, the former technique being more frequently referenced (except in Eclipse/Platform, in which code inspection is cited more often). Evidences of ad hoc testing were found only in Eclipse/Platform, because verification comments tend to be more structured in this project, but we believe that ad hoc testing is much more common.
+	
+	While sorting through comments, we have found interesting information regarding the software verification process. In Eclipse/Platform, the developer who fixes a bug often someone else to verify the fix, by asking ``please verify, [developer name]''. If the bug is reopened, then the fixer and the verifier exchange roles. This behavior illustrates a structured bug fixing/verification process.
+	
+	In Eclipse/EMF, we found that marking a bug as \VERIFIED\ does not mean that the bug fix was verified. Instead, it means that the fix was made available in a build of the software that is published in the subproject's website. This reinterpretation of the Bugzilla workflow was decided in a meeting\footnote{\url{http://wiki.eclipse.org/Modeling_PMC_Meeting,_2007-10-16}}.
 
   % In Eclipse/Platform, though, a significant number of verification messages include the technique used, e.g., ``verified by code inspection'', or ``verified with test case''. Based on such observations, we have built a search term for inspections and another one for unit tests. Then, we have classified the technique described in each verification message using the search term.
 
-  In Eclipse/Platform, there are 13,483 verifications, each one with a message. By the search criteria, 494 were identified as code inspections, 118 were identified as tests and 74 were identified as ad hoc.
-
-	Evidence of both code inspection and automated testing was found in all projects, although the evidence was weaker.
+	%   In Eclipse/Platform, there are 13,483 verifications, each one with a message. By the search criteria, 494 were identified as code inspections, 118 were identified as tests and 74 were identified as ad hoc.
+	% 
+	% Evidence of both code inspection and automated testing was found in all projects, although the evidence was weaker.
 	
-	\textbf{Observations}.
-  We also noted that, in Eclipse/Platform, often the fixer requests someone else to verify the fix, by asking ``please verify, [developer name]''. If the bug is reopened, then the fixer and the verifier exchange roles. That is considered good practice.
+	% \textbf{Observations}.
+	%   We also noted that, in Eclipse/Platform, often the fixer requests someone else to verify the fix, by asking ``please verify, [developer name]''. If the bug is reopened, then the fixer and the verifier exchange roles. That is considered good practice.
+	% 
+	%   It is difficult to identify ad hoc cases, because they are so pervasive that they are not reported, and also they are reported in many different ways.
 
-  It is difficult to identify ad hoc cases, because they are so pervasive that they are not reported, and also they are reported in many different ways.
-
-	\TODO Eclipse/EMF: VERIFIED = in a build available in the website.
+	% Eclipse/EMF: VERIFIED = in a build available in the website.
 
 	%We analyzed cases in which the bug is fixed, the fixer asks someone else to verify the fix, and then the bug is reopened.
 
@@ -320,6 +344,8 @@ While mining bug repositories, one cannot assume that the \VERIFIED\ status comp
 	
 	\begin{table}
 		\begin{center}
+		
+		\caption{Discovered QA team for all four subprojects.}
 		\begin{tabular}{l|r|r}
 			% \toprule
 			\textbf{\centering Project} & 
@@ -333,7 +359,7 @@ While mining bug repositories, one cannot assume that the \VERIFIED\ status comp
 			% \bottomrule
 		\end{tabular}
 		\end{center}
-		\caption{Discovered QA team for all four subprojects.}
+
 		\label{tab:qa}
 	\end{table}
 	
@@ -378,22 +404,17 @@ While mining bug repositories, one cannot assume that the \VERIFIED\ status comp
 \end{section}
 
 \begin{section}{Conclusion} \label{sec:conclusion}
-  The \VERIFIED\ status is used in a variety of distinct ways, not always consistent with the traditional definition of software verification ...
+	By analyzing four subprojects (two from Eclipse, two from NetBeans), we have found, using only data from bug repositories, subprojects with and without QA teams, with and without a well-defined verification phase. We also have found evidence of the application of automated testing and source code inspection, although such evidence was less reliable. Also, we have found cases in which marking a bug as \VERIFIED\ does not imply that any kind of software verification was actually performed.
+			
+	With the knowledge obtained from this exploratory research, we aim to improve and extend our previous work on the impact of independent verification on software quality. We can investigate, for example, whether verification performed by QA team is better than verification performed by other developers.
 	
-	Summary of the findings:
-	\begin{itemize}
-		\item It is difficult to detect the verification technique used in each reported verification. 
-		\item Beware of cliff walls!
-		\item Know your project. 
-	\end{itemize}
+	Researchers should be aware that information about verification techniques are not common in bug repositories, and that reported verification does not always correspond to actual verification. Some exploration of the data is important to avoid such pitfalls.
 	
-	With the knowledge obtained from this exploratory research, we can improve and extend our previous work on the impact of independent verification on software quality. Examples of refined questions:
-	
-	\begin{itemize}
-		\item Does independent verification improve software quality when it is performed by developers from the QA team?
-		\item Does independent verification improve software quality when it is performed as an separate phase of the software release cycle?
-		\item Does independent verification improve software quality when a particular verification technique (e.g., inspections, unit testing) is used?
-	\end{itemize}
+	% \begin{itemize}
+	% 	\item Does independent verification improve software quality when it is performed by developers from the QA team?
+	% 	\item Does independent verification improve software quality when it is performed as an separate phase of the software release cycle?
+	% 	\item Does independent verification improve software quality when a particular verification technique (e.g., inspections, unit testing) is used?
+	% \end{itemize}
 	
 \end{section}
 
