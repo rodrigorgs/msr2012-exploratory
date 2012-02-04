@@ -23,7 +23,7 @@ Bug repositories have for a long time been used in software projects to support 
 
 % The information contained in bug repositories has been used in order to predict fault-proneness, to unveil developers' roles from data, to characterize transfer of work in software projects, and so on. Also, it has been used to investigate beliefs in software engineering related to software quality, such as the impact of developer turnover and of collective ownership on the occurrence of bugs.
 
-However, mining bug repositories has its own risks. Previous research has identified problems of missing data (e.g., rationale, traceability links between reported bug fixes and source code changes) and inaccurate data (e.g., misclassification of bugs) \cite{Aranda2009}. %,Bird2009,Nguyen2010,Ayari2007}.
+However, mining bug repositories has its own risks. Previous research has identified problems of missing data (e.g., rationale, traceability links between reported bug fixes and source code changes) and inaccurate data (e.g., misclassification of bugs) \cite{Aranda2009,Bird2009}. %,Bird2009,Nguyen2010,Ayari2007}.
 
   In previous research \cite{Souza2011}, we tried to assess the impact of independent verification of bug fixes on software quality, by mining data from bug repositories. 
   We relied on reported verifications tasks, as recorded in bug reports, and interpreted the recorded data according to the documentation for the specific bug tracking system used.
@@ -130,19 +130,19 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 
 \begin{subsection}{Data Extraction}
 	
-	In order to perform the desired analyses, we needed access to the data recorded by Bugzilla for a specific project, including status changes and comments. We have found such data for two projects---Eclipse and NetBeans---from the domain of integrated development environments. The data were made available as part of the Mining Software Repositories 2011 Challenge\footnote{\url{http://www.msrconf.org/msr-challenge.html}} in the form of MySQL database dumps. The files contain all data from the respective databases, except for developer profiles, that were omitted for privacy reasons.
+	In order to perform the desired analyses, we needed access to the data recorded by Bugzilla for a specific project, including status changes and comments. We have found such data for two projects---Eclipse and NetBeans---from the domain of integrated development environments. The data were made available as part of the Mining Software Repositories 2011 Challenge\footnote{\url{http://www.msrconf.org/msr-challenge.html}} in the form of MySQL database dumps. The files contain all data from the respective databases, except for developer profiles, omitted for privacy reasons.
 	
 	% We have had access to Eclipse Bugzilla database from October, 2001 to June, 2010, and to NetBeans Bugzilla database from ... to .... The data was made available as part of the Mining Software Repositories 2011 Challenge\footnote{\url{http://www.msrconf.org/msr-challenge.html}} as a SQL dump. The SQL dump contains all information recorded by Bugzilla for the projects (except for information about developers, which was removed for privacy reasons).
 
 	Eclipse development began in late 1998 with IBM\footnote{\url{http://www.ibm.com/developerworks/rational/library/nov05/cernosek/}}. It was licensed as open source in November, 2001. The available data set contains 316,911 bug reports for its 155 subprojects, from October, 2001 to June, 2010.
 		
-	NetBeans\footnote{\url{http://netbeans.org/about/history.html}} started  as a student project in 1996. It was bought by Sun Microsystems in October, 1999, and it was open sourced in March, 2000. The data set contains 185,578 bug reports for its 39 subprojects, from June, 1998 to June, 2010.
+	NetBeans\footnote{\url{http://netbeans.org/about/history.html}} started  as a student project in 1996. It was then bought by Sun Microsystems in October, 1999, and open sourced in March, 2000. The data set contains 185,578 bug reports for its 39 subprojects, from June, 1998 to June, 2010.
 	
 \end{subsection}
 
 \begin{subsection}{Data Sampling}
 
-	Four subprojects were chosen for further analysis: Eclipse/Platform, Eclipse/EMF, Netbeans/Platform, and Netbeans/VersionControl. The Platform subprojects are the main subprojects for the respective IDEs, so they are both important and representative of each projects' philosophy. 
+	Four subprojects were chosen for further analysis: Eclipse/Platform, Eclipse/EMF, NetBeans/Platform, and NetBeans/VersionControl. The Platform subprojects are the main subprojects for the respective IDEs, so they are both important and representative of each projects' philosophy. 
 	
 	The other two subprojects were chosen at random, restricted to subprojects in which the proportion of verified bugs was greater than the proportion observed in the respective Platform subprojects. The reason is to avoid selecting projects in which bugs are seldom marked as \VERIFIED. The following proportions of \VERIFIED\ bugs per project were observed: Eclipse/Platform: 16.0\%; Eclipse/EMF: 48.4\%; NetBeans/Platform: 21.4\%; NetBeans/VersionControl: 29.7\%.
 	
@@ -151,16 +151,16 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 	% Eclipse/EMF: 0.4835361489
 	% Eclipse/Platform: 0.1595397738
 	
-	% In order to obtain insight about the research questions, we read a sample of bug reports from both projects. For each project, two subprojects were chosen randomly among the projects with most verified bugs, resulting in the following subprojects: Eclipse/Platform, Eclipse/EMF, Netbeans/platform, Netbeans/versioncontrol. We have sampled 20 bug reports for each subproject, totalizing 80 bug reports.
+	% In order to obtain insight about the research questions, we read a sample of bug reports from both projects. For each project, two subprojects were chosen randomly among the projects with most verified bugs, resulting in the following subprojects: Eclipse/Platform, Eclipse/EMF, NetBeans/platform, NetBeans/versioncontrol. We have sampled 20 bug reports for each subproject, totalizing 80 bug reports.
 	% 
 	
 \end{subsection}
 
 \begin{subsection}{Analysis: How Are Bugs Verified?}
 
-	In order to discover the verification techniques used by the subprojects, we have looked at the comments written by developers when they mark a bug as \VERIFIED\ (meaning that the fix was accepted) or \REOPENED\ (meaning that the fix was rejected). First, an informal analysis was performed, by reading a sample of such comments, looking for textual patterns that indicate that a particular technique was used. Then, based on the informal analysis and on previous knowledge, a regular expression was built for each technique, that should match comments in which there is evidence that that particular technique was used. The regular expressions were refined by looking at the results matched by them and modifying them to avoid false positives. 
+	In order to discover the verification techniques used by the subprojects, we have looked at the comments written by developers when they mark a bug as \VERIFIED\ (meaning that the fix was accepted) or \REOPENED\ (meaning that the fix was rejected). First, an informal analysis was performed, by reading a sample of such comments, looking for textual patterns that indicate that a particular technique was used. Then, based on the informal analysis and on previous knowledge, a regular expression was built for each technique, to match comments in which there is evidence that that particular technique was used. The regular expressions were refined by looking at the results matched by them and modifying them to avoid false positives. 
 	
-	The regular expressions can be downloaded at \url{http://...}. For the sake of simplicity, the following list describes only some substrings matched by the regular expressions for each technique:
+	The regular expressions are available at \url{http://...}. For the sake of simplicity, the following list describes only some substrings matched by the regular expressions for each technique:
 		
 	\begin{itemize}
 		\item automated testing: testcase, test case, unit test, automated test, test result, run the test, test run;
@@ -172,7 +172,7 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 	
 	% The classification script is smart enough to ignore negative assertions, such as ``did not run the test''.	
 	
-	During the informal analysis, it was observed that ad hoc testing is reported in many distinct ways that are difficult to capture by means of regular expressions. Because of this, the regular expression for is expected to match only a few comments.
+	During the informal analysis, it was observed that ad hoc testing is reported in many distinct ways that are difficult to capture by means of regular expressions. Hence, its regular expression is expected to match only a few comments.
 	
 	% The regular expression for ad hoc testing is the most restrictive of them, because ad hoc testing was found to be reported in many distinct ways (when it is reported). %We expect to find fewer examples of ad hoc testing than it should be found.
 	
@@ -220,8 +220,6 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 
   % To identify the verification techniques used by the projects, we looked at messages written by developers when they mark a bug as VERIFIED (meaning that the bug fix is appropriate) or REOPENED (meaning that some problem was found in the proposed fix). First, we have read some messages, non-systematically, to get some idea of what is said in theses messages and how it is said.
 
-  Most verification comments do not provide any clue about the verification technique used. Most often, developers just state that the bug fix was verified, sometimes informing the build used to verify the fix. 
-
 	Table \ref{tab:how} shows, for each subproject, the number of comments associated with a bug being marked as \VERIFIED\ or \REOPENED\ that refers to a particular verification technique. No references to formal verification or static analysis were found; therefore, these techniques are not shown on the table.
 
 	\begin{table}
@@ -232,7 +230,7 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 			\textbf{\centering Project} & 
 			\textbf{\centering Testing} & 
 			\textbf{\centering Inspection} & 
-			\textbf{\centering Ad Hoc} & 
+			\textbf{\centering Ad Hoc} \\
 			\hline
 			Eclipse/Platform        & 260 (1.1\%) & 524 (2.2\%) & 74 (0.3\%) \\
 			Eclipse/EMF             & 27 (0.7\%) & 2 (0.1\%) & 0 (0.0\%) \\
@@ -249,7 +247,9 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 	
 	In all subprojects, comments suggest the use of automated testing and code inspection in the verification process, the former technique being more frequently referenced (except in Eclipse/Platform, in which code inspection is cited more often). Evidences of ad hoc testing were found only in Eclipse/Platform, because verification comments tend to be more structured in this project, but we believe that ad hoc testing is much more common.
 	
-	While sorting through comments, we have found interesting information regarding the software verification process. In Eclipse/Platform, the developer who fixes a bug often someone else to verify the fix, by asking ``please verify, [developer name]''. If the bug is reopened, then the fixer and the verifier exchange roles. This behavior illustrates a structured bug fixing/verification process.
+	While sorting through comments, we have found interesting information regarding the software verification process. Most verification comments do not provide any clue about the verification technique used. Most often, developers just state that the bug fix was verified, sometimes informing the build used to verify the fix. 
+  
+	In Eclipse/Platform, the developer who fixes a bug often someone else to verify the fix, by asking ``please verify, [developer name]''. If the bug is reopened, then the fixer and the verifier exchange roles. This behavior illustrates a structured bug fixing/verification process.
 	
 	In Eclipse/EMF, we found that marking a bug as \VERIFIED\ does not mean that the bug fix was verified. Instead, it means that the fix was made available in a build of the software that is published in the subproject's website. This reinterpretation of the Bugzilla workflow was decided in a meeting\footnote{\url{http://wiki.eclipse.org/Modeling_PMC_Meeting,_2007-10-16}}.
 
@@ -275,7 +275,7 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 % 	\item By inspecting code.
 % \end{itemize}
 
-	Conclusion: it's hard to determine the technique used by just looking at the data. Eclipse/Platform documents it better, sometimes.
+	% Conclusion: it's hard to determine the technique used by just looking at the data. Eclipse/Platform documents it better, sometimes.
 	
 \end{subsection}
 
@@ -283,7 +283,7 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 	
 	% In order to answer whether there is a verification phase for the projects analyzed, we plotted the cumulative number of verifications along the lifetime of each project, as shown in Figure XXX, in red. The vertical lines represent release dates for each version. As a basis for comparison, the number of bug fixes is also plotted, in black. 
 
-	Figure \ref{fig:when} shows plots of total accumulated number verifications over time for Eclipse/Platform (left) and NetBeans/Platform (right). Releases are plotted as dashed vertical lines.	
+	Figure \ref{fig:when} shows plots of total accumulated number of verifications over time for Eclipse/Platform (left) and NetBeans/Platform (right). Releases are plotted as dashed vertical lines.	
 
 \begin{figure}
 \centering
@@ -300,7 +300,7 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 % 	\label{fig:label}
 % \end{figure}
 
-	For Eclipse/Platform, the graph shows the period between releases 3.5 and 3.6, including milestone releases every 6 to 7 weeks. It is clear from the graph that the verification activity is intensified in a few days preceding a milestone, represented in the graph by steeper ascents before the vertical lines. This pattern is an indicator of a verification phase. No such pattern was found in the other subprojects by analyzing their graphs (not shown here for brevity).
+	For Eclipse/Platform, the graph shows the period between releases 3.5 and 3.6, including milestone releases every 6 or 7 weeks. It is clear from the graph that the verification activity is intensified in a few days preceding a milestone, represented in the graph by steeper ascents before the vertical lines. This pattern is an indicator of a verification phase. No such pattern was found in the other subprojects by analyzing their graphs (not shown here for brevity).
 
 	The graph for NetBeans/Platform (Figure \ref{fig:when}, right side) shows the entire project history. Although there are steeper ascents, they are different because they do not precede release dates. Also, at a closer look, they represent thousands of verifications performed in a few minutes by the same developer, with the same comment. The same pattern was found in Eclipse/EMF (not shown).
 	
@@ -309,7 +309,7 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 	% 
 	% We found evidence of a verification phase for Eclipse/Platform. In this project, verifications appear to be performed in bursts, with periods of intense activity separated by about 6 to 7 weeks of low or no activity. By taking a closer look in the period between the releases 3.5 and 3.6 (Figure XXX), it is clear that the periods of intense verification activity occur just before the milestones leading to 3.6.
 	% 
-	% No such pattern was found for Netbeans' subprojects.
+	% No such pattern was found for NetBeans' subprojects.
 	
 	% We did not find evidence of a verification phase preceding each release. Unlike the bug fixing activity, the pace of verification is not steady, either. Instead, verification appears to be performed in bursts, which a couple of weeks with low or no activity, followed by a couple of days of intense verification activity.
 	
@@ -318,7 +318,7 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 	
 	%%%%%%%%%%%%%%%%%%%%%%
 	
-	% The first thing that comes to attention are ``cliff walls'', points in time when a large amount of bugs are verified, represented by steep, almost vertical portions of the plotted line. They appear in Eclipse/EMF and Netbeans/Platform. In Netbeans/Platform, all verifications in the cliff wall preceding version 5.5 share the same message: ``Verification of old issues''. For Eclipse/EMF, the message is ``Move to verified as per bug 206558'', which refers to the task of changing bugs marked as \FIXED\ to \VERIFIED.
+	% The first thing that comes to attention are ``cliff walls'', points in time when a large amount of bugs are verified, represented by steep, almost vertical portions of the plotted line. They appear in Eclipse/EMF and NetBeans/Platform. In NetBeans/Platform, all verifications in the cliff wall preceding version 5.5 share the same message: ``Verification of old issues''. For Eclipse/EMF, the message is ``Move to verified as per bug 206558'', which refers to the task of changing bugs marked as \FIXED\ to \VERIFIED.
 	% 
 	% Cliff walls represent a change in the development process, and the mass verification is needed in order to leverage useful features from Bugzilla (e.g., looking for verified bugs in order to aid the writing of release notes).
 	
@@ -402,7 +402,7 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 % Total developers: 24 
 % \end{verbatim}
 	
-	In NetBeans (both Platform and VersionControl) it is possible to infer the existence of a QA team, composed by approximately 20\% of the developers, that performs about 90\% of all verifications. In the Eclipse subprojects, there is no evidence of a dedicated QA team. In Eclipse/EMF no developer focus specifically on verification. In Eclipse/Platform, 2.4\% of the developers focus on verification tasks, contributing only to 1.1\% of the verifications.
+	In both NetBeans subprojects it is possible to infer the existence of a QA team, composed by approximately 20\% of the developers, that performs about 90\% of all verifications. In the Eclipse subprojects, there is no evidence of a dedicated QA team. In Eclipse/EMF no developer focus specifically on verification. In Eclipse/Platform, 2.4\% of the developers focus on verification tasks, contributing only to 1.1\% of the verifications.
 	
 % (it should be remembered that verification in EMF has a peculiar meaning)	
 	
@@ -411,9 +411,9 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 \end{section}
 
 \begin{section}{Conclusion} \label{sec:conclusion}
-	By analyzing four subprojects (two from Eclipse, two from NetBeans), we have found, using only data from bug repositories, subprojects with and without QA teams, with and without a well-defined verification phase. We also have found evidence of the application of automated testing and source code inspection, although such evidence was less reliable. Also, we have found cases in which marking a bug as \VERIFIED\ does not imply that any kind of software verification was actually performed.
+	By analyzing four subprojects (two from Eclipse, two from NetBeans), we have found, using only data from bug repositories, subprojects with and without QA teams, with and without a well-defined verification phase. We also have found weaker evidence of the application of automated testing and source code inspection. Also, we have found cases in which marking a bug as \VERIFIED\ does not imply that any kind of software verification was actually performed.
 			
-	With the knowledge obtained from this exploratory research, we aim to improve and extend our previous work on the impact of independent verification on software quality. We can investigate, for example, whether verification performed by QA team is better than verification performed by other developers.
+	With the knowledge obtained from this exploratory research, we aim to improve and extend our previous work on the impact of independent verification on software quality. We can investigate, for example, whether verification performed by QA team is more effective than verification performed by other developers.
 	
 	Researchers should be aware that information about verification techniques are not common in bug repositories, and that reported verification does not always correspond to actual verification. Some exploration of the data is important to avoid such pitfalls.
 	
