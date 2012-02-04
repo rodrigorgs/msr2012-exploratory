@@ -402,11 +402,33 @@ Federal University of Bahia (UFBA), Brazil \\
 % make the title area
 \maketitle
 
+% how verification is actually performed and reported on specific software projects.
 
 \begin{abstract}
 	Data from bug repositories have been used to enable inquiries about software product and process quality. Unfortunately, such repositories often contain inaccurate, inconsistent, or missing data, which can originate misleading results. 
-	In this paper, we investigate the reported status of bug reports from the projects Eclipse and Netbeans, in special the VERIFIED status, corresponding to the verification that a  bug fix is appropriate. We show that the VERIFIED status is used in a variety of distinct ways, not always consistent with the traditional definition of software verification.
-	Future research should take into account the multiple contexts in which the VERIFIED status is used when deriving conclusions based on the data from bug reports.
+	% In this paper, we show how data from bug repositories can be mined in order to give insights about the process of software verification in two open source projects, Eclipse and NetBeans.
+	
+	In this paper, we investigate how well data from bug repositories support the discovery of details about the software verification process in two open source projects, Eclipse and NetBeans.
+	%In this paper, we investigate the process of verification of bug fixes of two open source projects, Eclipse and NetBeans, by analyzing only the data in bug repositories. 
+	We have been able do identify quality assurance teams in NetBeans and to detect a well-defined verification phase in Eclipse. 
+	
+	A major challenge, however, was to identify the verification techniques used in the projects. Moreover, we found cases in which a large batch of bug fixes is simultaneously reported to be verified, although no software verification was actually done. 
+	
+	Such mass verifications, if not acknowledged, threatens analyses that rely on information about software verification reported on bug repositories. Therefore, we recommend that the exploratory analyses presented in this paper precede inferences based on reported verifications. %on bug reports.
+	
+	% Knowing details from the verification process of a project and how it is reported on bug repositories is valuable to anyone interested in studying software verification using a data-based approach. 
+	% 
+	% Such pitfalls for data analyses should be taken into account in any future research relying on verification information from bug repositories
+	% 
+	% Future research should take into 
+	% pitfalls of data.
+	%  account such threats when analyzing 
+	% It is recommended
+	% 
+	% Also, we found periods in which a large batch of bug fixes is marked 
+	% 
+	% In this paper, we investigate the reported status of bug reports from the projects Eclipse and Netbeans, in special the VERIFIED status, corresponding to the verification that a  bug fix is appropriate. We show that the VERIFIED status is used in a variety of distinct ways, not always consistent with the traditional definition of software verification.
+	% Future research should take into account the multiple contexts in which the VERIFIED status is used when deriving conclusions based on the data from bug reports.
 \end{abstract}
 
 \begin{IEEEkeywords}
