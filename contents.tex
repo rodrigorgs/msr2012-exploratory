@@ -129,7 +129,7 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 		\item \textbf{Data analysis}: for each research question, a distinct analysis was required. The analyses will be further described.
 	\end{enumerate}	
 	
-	The experimental package is available at \url{https://sites.google.com/site/rodrigorgs2/msr2012}.
+	The experimental package is available at \\ \url{https://sites.google.com/site/rodrigorgs2/msr2012}
 
 \begin{subsection}{Data Extraction}
 	
@@ -227,7 +227,7 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 
 	\begin{table}
 		\begin{center}
-		\caption{Verification techniques for all four subprojects.}
+		\caption{Verification techniques for all four subprojects.} \label{tab:how}
 		\begin{tabular}{l|r|r|r}
 			% \toprule
 			\textbf{\centering Project} & 
@@ -242,8 +242,6 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 			% \bottomrule
 		\end{tabular}
 		\end{center}
-		
-		\label{tab:how}
 	\end{table}
 
 	In Eclipse/Platform, less than 4\% of the comments referenced the verification technique that was used; for the other projects, less than 1\% of the comments contained such references. Such low proportion reveals how difficult it is to infer the verification technique that was applied using only data from bug repositories. This is probably tacit knowledge that can only be extracted by asking the developers themselves.
@@ -355,7 +353,7 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 	\begin{table}
 		\begin{center}
 		
-		\caption{Discovered QA team for all four subprojects.}
+		\caption{Discovered QA team for all four subprojects.} \label{tab:qa}
 		\begin{tabular}{l|r|r}
 			% \toprule
 			\textbf{\centering Project} & 
@@ -370,7 +368,6 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 		\end{tabular}
 		\end{center}
 
-		\label{tab:qa}
 	\end{table}
 	
 	% We counted the number of times each developer verified or fixed a bug. We consider that, if a developer is primarily concerned with quality assurance, then s/he verifies much more bugs that s/he fixes.
@@ -414,7 +411,7 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 \end{section}
 
 \begin{section}{Conclusion} \label{sec:conclusion}
-	By analyzing four subprojects (two from Eclipse, two from NetBeans), we have found, using only data from bug repositories, subprojects with and without QA teams, with and without a well-defined verification phase. We also have found weaker evidence of the application of automated testing and source code inspection. Also, we have found cases in which marking a bug as \VERIFIED\ does not imply that any kind of software verification was actually performed.
+	By analyzing four subprojects (two from Eclipse, two from NetBeans), we have found, using only data from bug repositories, subprojects with and without QA teams, with and without a well-defined verification phase. We also have found weaker evidence of the application of automated testing and source code inspection. Also, there were cases in which marking a bug as \VERIFIED\ did not imply that any kind of software verification was actually performed.
 			
 	With the knowledge obtained from this exploratory research, we aim to improve and extend our previous work on the impact of independent verification on software quality. We can investigate, for example, whether verification performed by QA team is more effective than verification performed by other developers.
 	
