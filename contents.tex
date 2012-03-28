@@ -298,18 +298,20 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 		\begin{center}
 		
 		\caption{Discovered QA team for all four subprojects.} \label{tab:qa}
-		\begin{tabular}{l|r|r}
+		\begin{tabular}{l|r|r|c}
 			% \toprule
 			\textbf{\centering Project} & 
-			\textbf{\centering QA team size} & 
-			\MyHead{1.5cm}{\textbf{\% of verifications by QA team}} \\
+			\MyHead{1.2cm}{\textbf{\centering QA team size}} & 
+			\MyHead{1.6cm}{\textbf{\% of verifications by QA team}} &
+			\MyHead{2.7cm}{\textbf{Distribution of ratio (bugs verified / bugs fixed) per developer}} \\
 			\hline
-			Eclipse & & \\
-			\quad Platform        & 4 (2.4\%)  &  1.1\% \\
-			\quad EMF             & 0 (0.0\%)  &  0.0\% \\
-			NetBeans & & \\
-			\quad Platform       & 25 (18.8\%) & 80.1\% \\
-			\quad VersionControl & 5 (20.8\%) & 93.2\% \\
+			\textbf{Eclipse} & & & 
+			   \multirow{6}{*}{\includegraphics[scale=1]{ratio}}\\
+			\quad Platform        & 4 (2.4\%)  &  1.1\% &  \\
+			\quad EMF             & 0 (0.0\%)  &  0.0\% & \\
+			\textbf{NetBeans} & & \\
+			\quad Platform       & 25 (18.8\%) & 80.1\% & \\
+			\quad V.Control & 5 (20.8\%) & 93.2\% & \\
 			% \bottomrule
 		\end{tabular}
 		\end{center}
@@ -318,7 +320,7 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 		
 	In both NetBeans subprojects it is possible to infer the existence of a QA team, composed by approximately 20\% of the developers, performing at least 80\% of all verifications. In the Eclipse subprojects, there is no evidence of a dedicated QA team. In Eclipse/EMF no developer focus specifically on verification. In Eclipse/Platform, 2.4\% of the developers focus on verification tasks, contributing only to 1.1\% of the verifications.
 	
-	Although the reported results are based on an arbitrary threshold (10) for the ratio between verifications and fixes, other values (2 and 5) were also used, leading to similar results.
+	Although the reported results are based on an arbitrary threshold (10) for the ratio between verifications and fixes, other values (2 and 5) were also used, leading to similar results. The rightmost column of Table \ref{tab:qa} shows the distribution of the ratio, in log scale, where it can be seen that ratios above 10 are uncommon in all projects.
 	
 % (it should be remembered that verification in EMF has a peculiar meaning)	
 	
