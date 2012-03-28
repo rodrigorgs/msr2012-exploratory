@@ -159,9 +159,25 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 	
 \end{subsection}
 
+\begin{subsection}{Analysis: When Are Bugs Verified?}
+	
+	In order to determine if there is a well-defined verification phase for the subprojects, we have selected all reported verifications (i.e., status changes to \VERIFIED) over the lifetime of each subproject. Then, we have plotted, for each day in the interval, the accumulated number of verifications reported since the first day available in the data. The curve is monotonically increasing, with steeper ascents representing periods of intense verification activity.
+	
+	Also, we have obtained the release dates for multiple versions of Eclipse and NetBeans. The information was obtained from the respective websites. In cases in which older information was not available, archived versions of the web pages were accessed via the website \url{www.archive.org}.
+	
+	If a subproject presents a well-defined verification phase, it is expected that the verification activity is more intense a few days before a release. Such pattern can be identified by visual inspection of the graph, by looking for steeper ascents in the verification curve preceding the release dates.
+	
+\end{subsection}
+
+\begin{subsection}{Analysis: Who Verifies Bugs?}
+	
+	In order to determine whether there is a team dedicated to quality assurance (QA), we have counted how many times each developer has marked a bug as \FIXED\ or \VERIFIED. We considered that a developer is part of a QA team if s/he verified at least 10 times (i.e., one order of magnitude) more than s/he fixed bugs. Also, we have computed the proportion of verifications that was performed by the discovered QA team. It is expected that, if the discovered set of developers is actually a QA team, they should be responsible for the majority of the verifications.
+	
+\end{subsection}
+
 \begin{subsection}{Analysis: How Are Bugs Verified?}
 
-	In order to discover the verification techniques used by the subprojects, we have looked at the comments written by developers when they mark a bug as \VERIFIED\ (meaning that the fix was accepted) or \REOPENED\ (meaning that the fix was rejected). First, an informal analysis was performed, by reading a sample of such comments, looking for textual patterns that indicate that a particular technique was used. Then, based on the informal analysis and on previous knowledge, a regular expression was built for each technique, to match comments in which there is evidence that that particular technique was used. The regular expressions were refined by looking at the results matched by them and modifying them to avoid false positives. 
+	In order to discover the verification techniques used by the subprojects, we have looked at the comments written by developers when they mark a bug as \VERIFIED\ (meaning that the fix was accepted) or \REOPENED\ (meaning that the fix was rejected). First, an informal analysis was performed, by reading a sample of such comments, looking for textual patterns that indicate that a particular technique was used. Then, based on the informal analysis and on previous knowledge, a regular expression was built for each technique, to match comments in which there is evidence that a particular technique was used. The regular expressions were refined by looking at the results matched by them and modifying them to avoid false positives. 
 	
 	The complete regular expressions are available in the experimental package. For the sake of simplicity, the following list describes only some substrings matched by the regular expressions for each technique:
 		
@@ -178,22 +194,6 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 	During the informal analysis, it was observed that ad hoc testing is reported in many distinct ways that are difficult to capture by means of regular expressions. Hence, its regular expression is expected to match only a few comments.
 	
 	% The regular expression for ad hoc testing is the most restrictive of them, because ad hoc testing was found to be reported in many distinct ways (when it is reported). %We expect to find fewer examples of ad hoc testing than it should be found.
-	
-\end{subsection}
-
-\begin{subsection}{Analysis: When Are Bugs Verified?}
-	
-	In order to determine if there is a well-defined verification phase for the subprojects, we have selected all reported verifications (i.e., status changes to \VERIFIED) over the lifetime of each subproject. Then, we have plotted, for each day in the interval, the accumulated number of verifications reported since the first day available in the data. The curve is monotonically increasing, with steeper ascents representing periods of intense verification activity.
-	
-	Also, we have obtained the release dates for multiple versions of Eclipse and NetBeans. The information was obtained from the respective websites. In cases in which older information was not available, archived versions of the web pages were accessed via the website \url{www.archive.org}.
-	
-	If a subproject presents a well-defined verification phase, it is expected that the verification activity is more intense a few days before a release. Such pattern can be identified by visual inspection of the graph, by looking for steeper ascents in the verification curve preceding the release dates.
-	
-\end{subsection}
-
-\begin{subsection}{Analysis: Who Verifies Bugs?}
-	
-	In order to determine whether there is a team dedicated to quality assurance (QA), we have counted how many times each developer has marked a bug as \FIXED\ or \VERIFIED. We considered that a developer is part of a QA team if s/he verified at least 10 times (i.e., one order of magnitude) more than s/he fixed bugs. Also, we have computed the proportion of verifications that was performed by the discovered QA team. It is expected that, if the discovered set of developers is actually a QA team, they should be responsible for the majority of the verifications.
 	
 \end{subsection}
 
@@ -219,67 +219,6 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 % 	
 % \end{subsection}	
 	
-\begin{subsection}{How Are Bugs Verified?}
-
-  % To identify the verification techniques used by the projects, we looked at messages written by developers when they mark a bug as VERIFIED (meaning that the bug fix is appropriate) or REOPENED (meaning that some problem was found in the proposed fix). First, we have read some messages, non-systematically, to get some idea of what is said in theses messages and how it is said.
-
-	Table \ref{tab:how} shows, for each subproject, the number of comments associated with a bug being marked as \VERIFIED\ or \REOPENED\ that refers to a particular verification technique. No references to formal verification or static analysis were found; therefore, these techniques are not shown on the table.
-
-	\begin{table}
-		\begin{center}
-		\caption{Verification techniques for all four subprojects.} \label{tab:how}
-		\begin{tabular}{l|r|r|r}
-			% \toprule
-			\textbf{\centering Project} & 
-			\textbf{\centering Testing} & 
-			\textbf{\centering Inspection} & 
-			\textbf{\centering Ad Hoc} \\
-			\hline
-			Eclipse/Platform        & 260 (1.1\%) & 524 (2.2\%) & 74 (0.3\%) \\
-			Eclipse/EMF             & 27 (0.7\%) & 2 (0.1\%) & 0 (0.0\%) \\
-			NetBeans/Platform       & 94 (0.6\%) & 5 (0.0\%) & 0 (0.0\%) \\
-			NetBeans/VersionControl & 4 (0.1\%) & 1 (0.0\%) & 0 (0.0\%) 
-			% \bottomrule
-		\end{tabular}
-		\end{center}
-	\end{table}
-
-	In Eclipse/Platform, less than 4\% of the comments referenced the verification technique that was used; for the other projects, less than 1\% of the comments contained such references. Such low proportion reveals how difficult it is to infer the verification technique that was applied using only data from bug repositories. This is probably tacit knowledge that can only be extracted by asking the developers themselves.
-	
-	In all subprojects, comments suggest the use of automated testing and code inspection in the verification process, the former technique being more frequently referenced (except in Eclipse/Platform, in which code inspection is cited more often). Evidences of ad hoc testing were found only in Eclipse/Platform, because verification comments tend to be more structured in this project, but we believe that ad hoc testing is much more common, given its unstructured nature.
-	
-	While sorting through comments, we have found interesting information regarding the software verification process. Most verification comments do not provide any clue about the verification technique used. Most often, developers just state that the bug fix was verified, sometimes informing the build used to verify the fix. 
-  
-	In Eclipse/Platform, the developer who fixes a bug often asks someone else to verify the fix, by asking ``please verify, [developer name]''. If the bug is reopened, then the fixer and the verifier exchange roles. This behavior illustrates a structured bug fixing/verification process.
-	
-	In Eclipse/EMF, we found that marking a bug as \VERIFIED\ does not mean that the bug fix was verified. Instead, it means that the fix was made available in a build of the software that is published in the subproject's website. This reinterpretation of the Bugzilla workflow was decided in a meeting\footnote{\url{http://wiki.eclipse.org/Modeling_PMC_Meeting,_2007-10-16}}.
-
-  % In Eclipse/Platform, though, a significant number of verification messages include the technique used, e.g., ``verified by code inspection'', or ``verified with test case''. Based on such observations, we have built a search term for inspections and another one for unit tests. Then, we have classified the technique described in each verification message using the search term.
-
-	%   In Eclipse/Platform, there are 13,483 verifications, each one with a message. By the search criteria, 494 were identified as code inspections, 118 were identified as tests and 74 were identified as ad hoc.
-	% 
-	% Evidence of both code inspection and automated testing was found in all projects, although the evidence was weaker.
-	
-	% \textbf{Observations}.
-	%   We also noted that, in Eclipse/Platform, often the fixer requests someone else to verify the fix, by asking ``please verify, [developer name]''. If the bug is reopened, then the fixer and the verifier exchange roles. That is considered good practice.
-	% 
-	%   It is difficult to identify ad hoc cases, because they are so pervasive that they are not reported, and also they are reported in many different ways.
-
-	% Eclipse/EMF: VERIFIED = in a build available in the website.
-
-	%We analyzed cases in which the bug is fixed, the fixer asks someone else to verify the fix, and then the bug is reopened.
-
-% \begin{itemize}
-% 	\item By creating or running unit tests.
-% 	\item By creating throw-away or configuration code that forces the occurrence of the error.
-% 	\item By running the software in a determined way (ad hoc). Often indicated by verbs.
-% 	\item By inspecting code.
-% \end{itemize}
-
-	% Conclusion: it's hard to determine the technique used by just looking at the data. Eclipse/Platform documents it better, sometimes.
-	
-\end{subsection}
-
 \begin{subsection}{When Are Bugs Verified?}
 	
 	% In order to answer whether there is a verification phase for the projects analyzed, we plotted the cumulative number of verifications along the lifetime of each project, as shown in Figure XXX, in red. The vertical lines represent release dates for each version. As a basis for comparison, the number of bug fixes is also plotted, in black. 
@@ -405,6 +344,67 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 	In both NetBeans subprojects it is possible to infer the existence of a QA team, composed by approximately 20\% of the developers, that performs about 90\% of all verifications. In the Eclipse subprojects, there is no evidence of a dedicated QA team. In Eclipse/EMF no developer focus specifically on verification. In Eclipse/Platform, 2.4\% of the developers focus on verification tasks, contributing only to 1.1\% of the verifications.
 	
 % (it should be remembered that verification in EMF has a peculiar meaning)	
+	
+\end{subsection}
+
+\begin{subsection}{How Are Bugs Verified?}
+
+  % To identify the verification techniques used by the projects, we looked at messages written by developers when they mark a bug as VERIFIED (meaning that the bug fix is appropriate) or REOPENED (meaning that some problem was found in the proposed fix). First, we have read some messages, non-systematically, to get some idea of what is said in theses messages and how it is said.
+
+	Table \ref{tab:how} shows, for each subproject, the number of comments associated with a bug being marked as \VERIFIED\ or \REOPENED\ that refers to a particular verification technique. No references to formal verification or static analysis were found; therefore, these techniques are not shown on the table.
+
+	\begin{table}
+		\begin{center}
+		\caption{Verification techniques for all four subprojects.} \label{tab:how}
+		\begin{tabular}{l|r|r|r}
+			% \toprule
+			\textbf{\centering Project} & 
+			\textbf{\centering Testing} & 
+			\textbf{\centering Inspection} & 
+			\textbf{\centering Ad Hoc} \\
+			\hline
+			Eclipse/Platform        & 260 (1.1\%) & 524 (2.2\%) & 74 (0.3\%) \\
+			Eclipse/EMF             & 27 (0.7\%) & 2 (0.1\%) & 0 (0.0\%) \\
+			NetBeans/Platform       & 94 (0.6\%) & 5 (0.0\%) & 0 (0.0\%) \\
+			NetBeans/VersionControl & 4 (0.1\%) & 1 (0.0\%) & 0 (0.0\%) 
+			% \bottomrule
+		\end{tabular}
+		\end{center}
+	\end{table}
+
+	In Eclipse/Platform, less than 4\% of the comments referenced the verification technique that was used; for the other projects, less than 1\% of the comments contained such references. Such low proportion reveals how difficult it is to infer the verification technique that was applied using only data from bug repositories. This is probably tacit knowledge that can only be extracted by asking the developers themselves.
+	
+	In all subprojects, comments suggest the use of automated testing and code inspection in the verification process, the former technique being more frequently referenced (except in Eclipse/Platform, in which code inspection is cited more often). Evidences of ad hoc testing were found only in Eclipse/Platform, because verification comments tend to be more structured in this project, but we believe that ad hoc testing is much more common, given its unstructured nature.
+	
+	While sorting through comments, we have found interesting information regarding the software verification process. Most verification comments do not provide any clue about the verification technique used. Most often, developers just state that the bug fix was verified, sometimes informing the build used to verify the fix. 
+  
+	In Eclipse/Platform, the developer who fixes a bug often asks someone else to verify the fix, by asking ``please verify, [developer name]''. If the bug is reopened, then the fixer and the verifier exchange roles. This behavior illustrates a structured bug fixing/verification process.
+	
+	In Eclipse/EMF, we found that marking a bug as \VERIFIED\ does not mean that the bug fix was verified. Instead, it means that the fix was made available in a build of the software that is published in the subproject's website. This reinterpretation of the Bugzilla workflow was decided in a meeting\footnote{\url{http://wiki.eclipse.org/Modeling_PMC_Meeting,_2007-10-16}}.
+
+  % In Eclipse/Platform, though, a significant number of verification messages include the technique used, e.g., ``verified by code inspection'', or ``verified with test case''. Based on such observations, we have built a search term for inspections and another one for unit tests. Then, we have classified the technique described in each verification message using the search term.
+
+	%   In Eclipse/Platform, there are 13,483 verifications, each one with a message. By the search criteria, 494 were identified as code inspections, 118 were identified as tests and 74 were identified as ad hoc.
+	% 
+	% Evidence of both code inspection and automated testing was found in all projects, although the evidence was weaker.
+	
+	% \textbf{Observations}.
+	%   We also noted that, in Eclipse/Platform, often the fixer requests someone else to verify the fix, by asking ``please verify, [developer name]''. If the bug is reopened, then the fixer and the verifier exchange roles. That is considered good practice.
+	% 
+	%   It is difficult to identify ad hoc cases, because they are so pervasive that they are not reported, and also they are reported in many different ways.
+
+	% Eclipse/EMF: VERIFIED = in a build available in the website.
+
+	%We analyzed cases in which the bug is fixed, the fixer asks someone else to verify the fix, and then the bug is reopened.
+
+% \begin{itemize}
+% 	\item By creating or running unit tests.
+% 	\item By creating throw-away or configuration code that forces the occurrence of the error.
+% 	\item By running the software in a determined way (ad hoc). Often indicated by verbs.
+% 	\item By inspecting code.
+% \end{itemize}
+
+	% Conclusion: it's hard to determine the technique used by just looking at the data. Eclipse/Platform documents it better, sometimes.
 	
 \end{subsection}
 
