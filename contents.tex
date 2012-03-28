@@ -246,6 +246,10 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 	
 	Of course, no developer can verify so many fixes in so little time. The explanation, supported by the comments, is that such mass verifications represent some cleanup of the bug repository, by marking old bugs as \VERIFIED---with no verification being actually performed. Researchers should take extra care with mass verifications, as they contain a large amount of bugs and, thus, are likely to bias the results of analyses.
 	
+	In the next two analyses (who and how), mass verifications were discarded. A verification was considered to be part of a mass verification if the developer who performed it also performed at least other 49 verifications in the same day. Although further research is needed to evaluate such criterion, it was able to identify the most obvious mass verification cases.
+	
+	After applying the criterion to identify mass verifications, 362 (2.4\%) verifications were discarded from Eclipse/Platform, 2348 (72.3\%) verifications were discarded from Eclipse/EMF, and 5336 (39.3\%) verifications were discarded from NetBeans/Platform. Mass verifications were not identified in NetBeans/VersionControl.
+	
 	% 
 	% We found evidence of a verification phase for Eclipse/Platform. In this project, verifications appear to be performed in bursts, with periods of intense activity separated by about 6 to 7 weeks of low or no activity. By taking a closer look in the period between the releases 3.5 and 3.6 (Figure XXX), it is clear that the periods of intense verification activity occur just before the milestones leading to 3.6.
 	% 
@@ -284,7 +288,7 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 
 \begin{subsection}{Who Verifies Bugs?}
 
-	Table \ref{tab:qa} presents, for each subproject, the number of developers attributed to a QA team (i.e., developers who perform verifications at least 10 times more often than contribute bug fixes), and the proportion of bug verifications they account for. Mass verifications and developers who have not contributed with fixes and verifications are discarded from the analysis.
+	Table \ref{tab:qa} presents, for each subproject, the number of developers attributed to a QA team (i.e., developers who perform verifications at least 10 times more often than contribute bug fixes), and the proportion of bug verifications they account for. Mass verifications and developers who have not contributed with fixes and verifications were discarded from the analysis.
 	
 	\newcommand\MyHead[2]{%
 	  \multicolumn{1}{l}{\parbox{#1}{\centering #2}}
