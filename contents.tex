@@ -177,21 +177,31 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 
 \begin{subsection}{Analysis: How Are Bugs Verified?}
 
-	In order to discover the verification techniques used by the subprojects, we have looked at the comments written by developers when they mark a bug as \VERIFIED\ (meaning that the fix was accepted) or \REOPENED\ (meaning that the fix was rejected). First, an informal analysis was performed, by reading a sample of such comments, looking for textual patterns that indicate that a particular technique was used. Then, based on the informal analysis and on previous knowledge, a regular expression was built for each technique, to match comments in which there is evidence that a particular technique was used. The regular expressions were refined by looking at the results matched by them and modifying them to avoid false positives. 
+	In order to discover the verification techniques used by the subprojects, we have selected the comments written by developers when they mark a bug as \VERIFIED\ (meaning that the fix was accepted) or \REOPENED\ (meaning that the fix was rejected). 
 	
-	The complete regular expressions are available in the experimental package. For the sake of simplicity, the following list describes only some substrings matched by the regular expressions for each technique:
-		
-	\begin{itemize}
-		\item automated testing: testcase, test case, unit test, automated test, test result, run the test, test run;
-		\item source code inspection: inspecting, inspection, look at the code, looking at the source;
-		\item ad hoc testing: verified by running, verified by [word ending in ``ing''];
-		\item automated static analysis: findbugs, checkstyle, static code, static analys;
-		\item formal testing: formal test, formal verif.
-	\end{itemize}
+	The comments were matched against five regular expressions, each corresponding to one of the following verification techniques: automated testing, source code inspection, ad hoc testing, automated static analysis, and formal testing. The complete regular expressions are available in the experimental package.
+
+	It should be noted that regular expressions may not be a reliable alternative to the problem of identifying verification techniques in comments. In future research, more advanced information retrieval techniques should be explored. Nevertheless, regular expressions should enable an initial study and help unveil insights about verification techniques in bug reports.
+	
+	% identify reliably the techniques prese
+	
+	% A regular expression was constructed to match terms related to each verification technique.
+	% 
+	% First, an informal analysis was performed, by reading a sample of such comments, looking for textual patterns that indicate that a particular technique was used. Then, based on the informal analysis and on previous knowledge, a regular expression was built for each technique, to match comments in which there is evidence that a particular technique was used. The regular expressions were refined by looking at the results matched by them and modifying them to avoid false positives. 
+	% 
+	% The complete regular expressions are available in the experimental package. For the sake of simplicity, the following list describes only some substrings matched by the regular expressions for each technique:
+	% 	
+	% \begin{itemize}
+	% 	\item automated testing: testcase, test case, unit test, automated test, test result, run the test, test run;
+	% 	\item source code inspection: inspecting, inspection, look at the code, looking at the source;
+	% 	\item ad hoc testing: verified by running, verified by [word ending in ``ing''];
+	% 	\item automated static analysis: findbugs, checkstyle, static code, static analys;
+	% 	\item formal testing: formal test, formal verif.
+	% \end{itemize}
 	
 	% The classification script is smart enough to ignore negative assertions, such as ``did not run the test''.	
 	
-	During the informal analysis, it was observed that ad hoc testing is reported in many distinct ways that are difficult to capture by means of regular expressions. Hence, its regular expression is expected to match only a few comments.
+	% During the informal analysis, it was observed that ad hoc testing is reported in many distinct ways that are difficult to capture by means of regular expressions. Hence, its regular expression is expected to match only a few comments.
 	
 	% The regular expression for ad hoc testing is the most restrictive of them, because ad hoc testing was found to be reported in many distinct ways (when it is reported). %We expect to find fewer examples of ad hoc testing than it should be found.
 	
@@ -357,7 +367,7 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 
 	No references to formal verification were found. Regarding static analysis, only 4 references were found; upon inspection, it was found that only one reference (bug report #15242 for NetBeans/Platform) implies the use of a static analysis tool in the verification process.
 
-	In all subprojects, comments suggest the use of automated testing and code inspection in the verification process, the former technique being more frequently referenced (except in Eclipse/Platform, in which code inspection is cited more often). Evidences of ad hoc testing were found only in Eclipse/Platform, probably due to limitations in the regular expressions.
+	In all projects, comments suggest the use of automated testing and code inspection in the verification process, the former technique being more frequently referenced (except in Eclipse/Platform). Evidences of ad hoc testing were found only in Eclipse/Platform, probably due to limitations in the regular expressions.
 
 	% Few comments
 	% 
