@@ -23,7 +23,7 @@ Bug repositories have for a long time been used in software projects to support 
 
 % The information contained in bug repositories has been used in order to predict fault-proneness, to unveil developers' roles from data, to characterize transfer of work in software projects, and so on. Also, it has been used to investigate beliefs in software engineering related to software quality, such as the impact of developer turnover and of collective ownership on the occurrence of bugs.
 
-However, mining bug repositories has its own risks. Previous research has identified problems of missing data (e.g., rationale, traceability links between reported bug fixes and source code changes) and inaccurate data (e.g., misclassification of bugs) \cite{Aranda2009}. %,Bird2009,Nguyen2010,Ayari2007}.
+However, mining bug repositories has its own risks. Previous research has identified problems of missing data (e.g., rationale, traceability links between reported bug fixes and source code changes), inaccurate data (e.g., misclassification of bugs) \cite{Aranda2009}, and biased data \cite{Bird2009}. %,Bird2009,Nguyen2010,Ayari2007}.
 
   In previous research \cite{Souza2011}, we tried to assess the impact of independent verification of bug fixes on software quality, by mining data from bug repositories. 
   We relied on reported verifications tasks, as recorded in bug reports, and interpreted the recorded data according to the documentation for the specific bug tracking system used.
@@ -32,9 +32,9 @@ However, mining bug repositories has its own risks. Previous research has identi
 	Hence, in this paper, we investigate the following exploratory research questions regarding the software verification process in Eclipse and NetBeans:
 
 	\begin{itemize}
-		\item \textbf{How} is the verification performed: are there performed ad hoc tests, automated tests, code inspection?
-		\item \textbf{Who} performs the verification: is there a QA (quality assurance) team? 
 		\item \textbf{When} is the verification performed: is it performed just after the fix, or is there a verification phase?
+		\item \textbf{Who} performs the verification: is there a QA (quality assurance) team? 		
+		\item \textbf{How} is the verification performed: are there performed ad hoc tests, automated tests, code inspection?
 		% \item How is the distribution of verification across developers?
 		% \item Is there a dedicated team for QA?
 	\end{itemize}
@@ -133,7 +133,7 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 
 \begin{subsection}{Data Extraction}
 	
-	In order to perform the desired analyses, we needed access to the data recorded by Bugzilla for a specific project, including status changes and comments. We have found such data for two projects---Eclipse and NetBeans---from the domain of integrated development environments. The data were made available as part of the Mining Software Repositories 2011 Challenge\footnote{\url{http://www.msrconf.org/msr-challenge.html}} in the form of MySQL database dumps. The files contain all data from the respective databases, except for developer profiles, omitted for privacy reasons.
+	In order to perform the desired analyses, we needed access to the data recorded by Bugzilla for a specific project, including status changes and comments. We have found such data for two projects---Eclipse and NetBeans---from the domain of integrated development environments. The data was made available as part of the Mining Software Repositories 2011 Challenge\footnote{\url{http://2011.msrconf.org/msr-challenge.html}} in the form of MySQL database dumps. The files contain all data from the respective databases, except for developer profiles, omitted for privacy reasons.
 	
 	% We have had access to Eclipse Bugzilla database from October, 2001 to June, 2010, and to NetBeans Bugzilla database from ... to .... The data was made available as part of the Mining Software Repositories 2011 Challenge\footnote{\url{http://www.msrconf.org/msr-challenge.html}} as a SQL dump. The SQL dump contains all information recorded by Bugzilla for the projects (except for information about developers, which was removed for privacy reasons).
 
@@ -185,7 +185,7 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 	
 	In order to determine if there is a well-defined verification phase for the subprojects, we have selected all reported verifications (i.e., status changes to \VERIFIED) over the lifetime of each subproject. Then, we have plotted, for each day in the interval, the accumulated number of verifications reported since the first day available in the data. The curve is monotonically increasing, with steeper ascents representing periods of intense verification activity.
 	
-	Also, we have obtained the release dates for multiple versions of Eclipse and NetBeans. The information was obtained in the respective websites. In cases in which older information was not available, archived versions of the web pages were accessed via the website \url{www.archive.org}.
+	Also, we have obtained the release dates for multiple versions of Eclipse and NetBeans. The information was obtained from the respective websites. In cases in which older information was not available, archived versions of the web pages were accessed via the website \url{www.archive.org}.
 	
 	If a subproject presents a well-defined verification phase, it is expected that the verification activity is more intense a few days before a release. Such pattern can be identified by visual inspection of the graph, by looking for steeper ascents in the verification curve preceding the release dates.
 	
@@ -250,7 +250,7 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 	
 	While sorting through comments, we have found interesting information regarding the software verification process. Most verification comments do not provide any clue about the verification technique used. Most often, developers just state that the bug fix was verified, sometimes informing the build used to verify the fix. 
   
-	In Eclipse/Platform, the developer who fixes a bug often someone else to verify the fix, by asking ``please verify, [developer name]''. If the bug is reopened, then the fixer and the verifier exchange roles. This behavior illustrates a structured bug fixing/verification process.
+	In Eclipse/Platform, the developer who fixes a bug often asks someone else to verify the fix, by asking ``please verify, [developer name]''. If the bug is reopened, then the fixer and the verifier exchange roles. This behavior illustrates a structured bug fixing/verification process.
 	
 	In Eclipse/EMF, we found that marking a bug as \VERIFIED\ does not mean that the bug fix was verified. Instead, it means that the fix was made available in a build of the software that is published in the subproject's website. This reinterpretation of the Bugzilla workflow was decided in a meeting\footnote{\url{http://wiki.eclipse.org/Modeling_PMC_Meeting,_2007-10-16}}.
 
@@ -427,4 +427,4 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 
 \section*{Acknowledgment}
 
-The first author is supported by FAPESB under grant BOL0119/2010.
+\small{This work is supported by FAPESB (grant BOL0119/2010) and CNPq/INES (grant 573964/2008-4).}
