@@ -55,9 +55,9 @@ However, mining bug repositories has its own risks. Previous research has identi
 
 % Reposit ́orios de bugs. Arquivam relat ́orios de defeitos e solicitac ̧ ̃oes de mudan ̧ca. Tais reposito ́rios ajudam os desenvolvedores a registrar, discutir e acompanhar a situa ̧ca ̃o de cada solicita ̧c ̃ao, desde a atribui ̧ca ̃o de uma solicita ̧ca ̃o a um desenvolvedor at ́e a verifica ̧c ̃ao da corre ̧c ̃ao ou melhoria. Exemplos incluem o Bugzilla, o Trac e o Jira.
 
-Bug tracking systems allow users and developers of a software project to manage a list of bugs for the project, along with information such as steps to reproduce the bug, its severity and the operating system used. Developers choose bugs to fix and can report on the progress of the bug fixing activities, ask for clarification, discuss causes for the bug etc.
+Bug tracking systems allow users and developers of a software project to manage a list of bugs for the project, along with information such as steps to reproduce the bug and the operating system used. Developers choose bugs to fix and report on the progress of the bug fixing activities, ask for clarification, discuss causes for the bug etc.
 
-In this research, we focus on Bugzilla, an open source bug tracking system used by notable software projects such as Eclipse, Mozilla, Linux Kernel, NetBeans, Apache, and companies such as NASA and Facebook\footnote{Complete list available at http://www.bugzilla.org/installation-list/.}. The general concepts from Bugzilla should apply to most other bug tracking systems.
+In this research, we focus on Bugzilla, an open source bug tracking system used by software projects such as Eclipse, Mozilla, Linux Kernel, NetBeans, Apache, and companies such as NASA and Facebook\footnote{Complete list available at http://www.bugzilla.org/installation-list/.}. The general concepts from Bugzilla should apply to most other bug tracking systems.
 
 One important feature of a bug that is recorded on bug tracking systems is its status. The status records the progress of the bug fixing activity.
 %, and, as such, provides data to software engineering studies
@@ -70,7 +70,7 @@ Figure \ref{fig:bugzilla} shows each status that can be recorded in Bugzilla, al
 	\label{fig:bugzilla}
 \end{figure}
 
-In the simplest cases, a bug is created and receive the status \UNCONFIRMED\ (if it was created by a regular user) or \NEW\ (if it was created by a developer). Next, it is \ASSIGNED\ to a developer, and then it is \RESOLVED, possibly by fixing it with a patch on the source code. The solution is then \VERIFIED\ by someone in the quality assurance team, if it is adequate, or otherwise it is \REOPENED. When a version of the software is released, all \VERIFIED\ bugs are \CLOSED.
+In simple cases, a bug is created and receive the status \UNCONFIRMED\ (when created by a regular user) or \NEW\ (when created by a developer). Next, it is \ASSIGNED\ to a developer, and then it is \RESOLVED, possibly by fixing it with a patch on the source code. The solution is then \VERIFIED\ by someone in the quality assurance team, if it is adequate, or otherwise it is \REOPENED. When a version of the software is released, all \VERIFIED\ bugs are \CLOSED.
 
 % If it passes the quality requirements, it is \CLOSED\ when the next release of the software is released. If it does not pass the quality requirements or if the solution only partially fixes the problem, the bug is \REOPENED.
 
@@ -83,7 +83,7 @@ In the simplest cases, a bug is created and receive the status \UNCONFIRMED\ (if
 %
 %Similarly, w
 %What do developers do before marking a bug as \VERIFIED? 
-Bugzilla documentation states that, when a bug is \VERIFIED, it means that ``QA [quality assurance team] has looked at the bug and the resolution and agrees that the appropriate resolution has been taken''\footnote{\url{https://landfill.bugzilla.org/bugzilla-3.6-branch/page.cgi?id=fields.html}}. It does not specify how developers should look at the resolution (e.g., by looking at the source code, or by running a patched version of the software). 
+Bugzilla documentation states that, when a bug is \VERIFIED, it means that ``QA [quality assurance team] has looked at the bug and the resolution and agrees that the appropriate resolution has been taken''\footnote{\url{https://landfill.bugzilla.org/bugzilla-3.6-branch/page.cgi?id=fields.html}}. It does not specify how developers should look at the resolution (e.g., by looking at the code, or by running the patched software). 
 
 % Again, the definition is broad, although it assumes the existence of a QA team.
 
@@ -118,7 +118,7 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 	In order to answer the research questions---when and how bug fixes are verified, and who verifies them---, a three-part method was used:
 	
 	\begin{enumerate}
-		\item \textbf{Data extraction}: we have obtained publicly available raw data from the Bugzilla repositories of two popular integrated development environments, Eclipse and NetBeans.
+		\item \textbf{Data extraction}: we have obtained publicly available raw data from the Bugzilla repositories of two integrated development environments, Eclipse and NetBeans.
 
 		\item \textbf{Data sampling}: for each project, two representative subprojects were chosen for analysis.
 		
@@ -126,7 +126,7 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 		
 		% \item \textbf{Informal analysis}: some bug reports were fully read, so insights could be gained from them.
 		
-		\item \textbf{Data analysis}: for each research question, a distinct analysis was required. The analyses will be further described.
+		\item \textbf{Data analysis}: for each research question, a distinct analysis was required, as will be further described.
 	\end{enumerate}	
 	
 	The experimental package is available at \\ \url{https://sites.google.com/site/rodrigorgs2/msr2012}
@@ -330,7 +330,11 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 
   % To identify the verification techniques used by the projects, we looked at messages written by developers when they mark a bug as VERIFIED (meaning that the bug fix is appropriate) or REOPENED (meaning that some problem was found in the proposed fix). First, we have read some messages, non-systematically, to get some idea of what is said in theses messages and how it is said.
 
-	Table \ref{tab:how} shows, for each subproject, the number of comments associated with a bug being marked as \VERIFIED\ or \REOPENED\ that refers to a particular verification technique. No references to formal verification or static analysis were found; therefore, these techniques are not shown on the table.
+	Table \ref{tab:how} shows, for each subproject, the number of comments associated with a bug being marked as \VERIFIED\ or \REOPENED\ that refers to a particular verification technique, as matched by the respective regular expressions. Comments associated with mass verifications were discarded.
+	
+	% No references to formal verification were found.
+	% 
+	% No references to formal verification or static analysis were found; therefore, these techniques are not shown on the table.
 
 	\begin{table}
 		\begin{center}
@@ -342,24 +346,36 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 			\textbf{\centering Inspection} & 
 			\textbf{\centering Ad Hoc} \\
 			\hline
-			Eclipse/Platform        & 260 (1.1\%) & 524 (2.2\%) & 74 (0.3\%) \\
-			Eclipse/EMF             & 27 (0.7\%) & 2 (0.1\%) & 0 (0.0\%) \\
-			NetBeans/Platform       & 94 (0.6\%) & 5 (0.0\%) & 0 (0.0\%) \\
-			NetBeans/VersionControl & 4 (0.1\%) & 1 (0.0\%) & 0 (0.0\%) 
+			Eclipse/Platform        & 250 (1.1\%) & 511 (2.2\%) & 67 (0.3\%) \\
+			Eclipse/EMF             & 21 (1.6\%) & 1 (0.1\%) & 0 \hspace{0.8cm} \\
+			NetBeans/Platform       & 88 (0.8\%) & 5 (0.0\%) & 0 \hspace{0.8cm} \\
+			NetBeans/VersionControl & 4 (0.1\%) & 1 (0.0\%) & 0 \hspace{0.8cm}
 			% \bottomrule
 		\end{tabular}
 		\end{center}
 	\end{table}
 
-	In Eclipse/Platform, less than 4\% of the comments referenced the verification technique that was used; for the other projects, less than 1\% of the comments contained such references. Such low proportion reveals how difficult it is to infer the verification technique that was applied using only data from bug repositories. This is probably tacit knowledge that can only be extracted by asking the developers themselves.
+	No references to formal verification were found. Regarding static analysis, only 4 references were found; upon inspection, it was found that only one reference (bug report #15242 for NetBeans/Platform) implies the use of a static analysis tool in the verification process.
+
+	In all subprojects, comments suggest the use of automated testing and code inspection in the verification process, the former technique being more frequently referenced (except in Eclipse/Platform, in which code inspection is cited more often). Evidences of ad hoc testing were found only in Eclipse/Platform, probably due to limitations in the regular expressions.
+
+	% Few comments
+	% 
+	The regular expressions were able to identify the verification technique only in 3.6\% of the comments at best (Eclipse/Platform). Such low proportion can be explained partly by limitations of the regular expression method (which can be addressed in future work) and partly by lack of information in the comments themselves.
+	% In future work, we expect to improve the results by using more sophisticated information retrieval techniques. %We suspect, however, that the majority of the comments do not provide relevant information about the verification technique that was used.
 	
-	In all subprojects, comments suggest the use of automated testing and code inspection in the verification process, the former technique being more frequently referenced (except in Eclipse/Platform, in which code inspection is cited more often). Evidences of ad hoc testing were found only in Eclipse/Platform, because verification comments tend to be more structured in this project, but we believe that ad hoc testing is much more common, given its unstructured nature.
+	By sorting through comments, we have found that many of them do not provide any clue about the verification technique used. Most often, developers just state that the bug fix was verified, sometimes informing the build used to verify the fix. 
 	
-	While sorting through comments, we have found interesting information regarding the software verification process. Most verification comments do not provide any clue about the verification technique used. Most often, developers just state that the bug fix was verified, sometimes informing the build used to verify the fix. 
+	% In Eclipse/Platform, less than 4\% of the comments referenced the verification technique that was used; for the other projects, the proportion was even lower. Such low proportion reveals how difficult it is to infer the verification technique that was applied using only data from bug repositories. This is probably tacit knowledge that can only be extracted by asking the developers themselves.
+	
+	
+	% Four references to static analysis tools were found in the comments. Upon further investigation, it was discovered that only in one case (bug report #15242 for NetBeans/Platform) such tool was said to be used for verification purposes.
+	
+  % While sorting through comments, we have found interesting information regarding the software verification process. Many verification comments do not provide any clue about the verification technique used. Most often, developers just state that the bug fix was verified, sometimes informing the build used to verify the fix. 
   
-	In Eclipse/Platform, the developer who fixes a bug often asks someone else to verify the fix, by asking ``please verify, [developer name]''. If the bug is reopened, then the fixer and the verifier exchange roles. This behavior illustrates a structured bug fixing/verification process.
+	In Eclipse/Platform, comments show that the developer who fixes a bug often asks someone else to verify the fix, by asking ``please verify, [developer name]''. If the bug is reopened, then the fixer and the verifier exchange roles. This behavior illustrates a structured bug fixing/verification process.
 	
-	In Eclipse/EMF, we found that marking a bug as \VERIFIED\ does not mean that the bug fix was verified. Instead, it means that the fix was made available in a build of the software that is published in the subproject's website. This reinterpretation of the Bugzilla workflow was decided in a meeting\footnote{\url{http://wiki.eclipse.org/Modeling_PMC_Meeting,_2007-10-16}}.
+	In Eclipse/EMF, we found that marking a bug as \VERIFIED\ does not mean that the bug fix was verified. Instead, it means that the fix was made available in a build of the software that is published in the subproject's website\footnote{See \url{http://wiki.eclipse.org/Modeling_PMC_Meeting,_2007-10-16}}.
 
   % In Eclipse/Platform, though, a significant number of verification messages include the technique used, e.g., ``verified by code inspection'', or ``verified with test case''. Based on such observations, we have built a search term for inspections and another one for unit tests. Then, we have classified the technique described in each verification message using the search term.
 
