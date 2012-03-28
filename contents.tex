@@ -284,7 +284,8 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 
 \begin{subsection}{Who Verifies Bugs?}
 
-	Table \ref{tab:qa} presents, for each subproject, the number of developers attributed to a QA team (i.e., developers who perform verifications at least 10 times more often than contribute bug fixes), and the proportion of bug verifications they account for.
+	Table \ref{tab:qa} presents, for each subproject, the number of developers attributed to a QA team (i.e., developers who perform verifications at least 10 times more often than contribute bug fixes), and the proportion of bug verifications they account for. Mass verifications and developers who have not contributed with fixes and verifications are discarded from the analysis.
+	
 	\newcommand\MyHead[2]{%
 	  \multicolumn{1}{l}{\parbox{#1}{\centering #2}}
 	}
@@ -312,6 +313,8 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 	\end{table}
 		
 	In both NetBeans subprojects it is possible to infer the existence of a QA team, composed by approximately 20\% of the developers, performing at least 80\% of all verifications. In the Eclipse subprojects, there is no evidence of a dedicated QA team. In Eclipse/EMF no developer focus specifically on verification. In Eclipse/Platform, 2.4\% of the developers focus on verification tasks, contributing only to 1.1\% of the verifications.
+	
+	Although the reported results are based on an arbitrary threshold (10) for the ratio between verifications and fixes, other values (2 and 5) were also used, leading to similar results.
 	
 % (it should be remembered that verification in EMF has a peculiar meaning)	
 	
