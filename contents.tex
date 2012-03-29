@@ -23,7 +23,7 @@ Bug repositories have for a long time been used in software projects to support 
 
 % The information contained in bug repositories has been used in order to predict fault-proneness, to unveil developers' roles from data, to characterize transfer of work in software projects, and so on. Also, it has been used to investigate beliefs in software engineering related to software quality, such as the impact of developer turnover and of collective ownership on the occurrence of bugs.
 
-However, mining bug repositories has its own risks. Previous research has identified problems of missing data \cite{Aranda2009} (e.g., rationale, traceability links between reported bug fixes and source code changes), inaccurate data (e.g., misclassification of bugs) \cite{Antoniol2008}, and biased data \cite{Bird2009}. %,Bird2009,Nguyen2010,Ayari2007}.
+However, mining bug repositories has its own risks. Previous research has identified problems of missing data (e.g., rationale, traceability links between reported bug fixes and source code changes) \cite{Aranda2009}, inaccurate data (e.g., misclassification of bugs) \cite{Antoniol2008}, and biased data \cite{Bird2009}. %,Bird2009,Nguyen2010,Ayari2007}.
 
   In previous research \cite{Souza2011}, we tried to assess the impact of independent verification of bug fixes on software quality, by mining data from bug repositories. 
   We relied on reported verifications tasks, as recorded in bug reports, and interpreted the recorded data according to the documentation for the specific bug tracking system used.
@@ -181,7 +181,7 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 	
 	The comments were matched against five regular expressions, each corresponding to one of the following verification techniques: automated testing, source code inspection, ad hoc testing, automated static analysis, and formal testing. The complete regular expressions are available in the experimental package.
 
-	It should be noted that regular expressions may not be a reliable alternative to the problem of identifying verification techniques in comments. In future research, more advanced information retrieval techniques should be explored. Nevertheless, regular expressions should enable an initial study and help unveil insights about verification techniques in bug reports.
+	It should be noted that regular expressions may not be a reliable alternative to the problem of identifying verification techniques in comments. In future research, more advanced information retrieval techniques should be explored. Nevertheless, regular expressions enable an initial study and help unveil insights about verification techniques in bug reports.
 	
 	% identify reliably the techniques prese
 	
@@ -211,7 +211,7 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 
 \begin{section}{Results and Discussion} \label{sec:results}
 	
-	Each of the three analysis was performed on Eclipse/Platform, Eclipse/EMF, NetBeans/Platform, and NetBeans/VersionControl. The results are presented next.
+	Each of the three analyses was performed on Eclipse/Platform, Eclipse/EMF, NetBeans/Platform, and NetBeans/VersionControl. The results are presented next.
 	
 % \begin{subsection}{Preliminary Analysis}
 % 	Some insights were gained in this step, partially answering the who, when, and how questions:
@@ -329,7 +329,7 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 
 	\end{table}
 		
-	In both NetBeans subprojects it is possible to infer the existence of a QA team, composed by approximately 20\% of the developers, performing at least 80\% of all verifications. In the Eclipse subprojects, there is no evidence of a dedicated QA team. Further evidence was found by looking for the substring ``QA team'' in the comments associated with the status \VERIFIED\ and \REOPENED. Comments referring to a QA team were only found in NetBeans subprojects.
+	In the Eclipse subprojects, there is no evidence of a dedicated QA team. In both NetBeans subprojects, on the other hand, it is possible to infer the existence of a QA team, composed by approximately 20\% of the developers, performing at least 80\% of all verifications. Further evidence was found by looking for the substring ``QA team'' in the comments associated with the status \VERIFIED\ and \REOPENED. Comments referring to a QA team were only found in NetBeans subprojects.
 	
 	% In Eclipse/EMF no developer focus specifically on verification. In Eclipse/Platform, 2.4\% of the developers focus on verification tasks, contributing only to 1.1\% of the verifications.
 	
@@ -377,7 +377,7 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 	The regular expressions were able to identify the verification technique only in 3.6\% of the comments at best (Eclipse/Platform). Such low proportion can be explained partly by limitations of the regular expression method (which can be addressed in future work) and partly by lack of information in the comments themselves.
 	% In future work, we expect to improve the results by using more sophisticated information retrieval techniques. %We suspect, however, that the majority of the comments do not provide relevant information about the verification technique that was used.
 	
-	By sorting through comments, we have found that many of them do not provide any clue about the verification technique used. Most often, developers just state that the bug fix was verified, sometimes informing the build used to verify the fix. 
+	By reading comments, we have found that many of them mention any verification technique. Most often, developers just state that the bug fix was verified, sometimes informing the build used to verify the fix. 
 	
 	% In Eclipse/Platform, less than 4\% of the comments referenced the verification technique that was used; for the other projects, the proportion was even lower. Such low proportion reveals how difficult it is to infer the verification technique that was applied using only data from bug repositories. This is probably tacit knowledge that can only be extracted by asking the developers themselves.
 	
@@ -386,7 +386,7 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 	
   % While sorting through comments, we have found interesting information regarding the software verification process. Many verification comments do not provide any clue about the verification technique used. Most often, developers just state that the bug fix was verified, sometimes informing the build used to verify the fix. 
   
-	In Eclipse/Platform, comments show that the developer who fixes a bug often asks someone else to verify the fix, by asking ``please verify, [developer name]''. If the bug is reopened, then the fixer and the verifier exchange roles. This behavior illustrates a structured bug fixing/verification process.
+	In Eclipse/Platform, comments show that the developer who fixes a bug often asks someone else to verify the fix, by asking ``please verify, [developer name]''. If the bug is reopened, then the fixer and the verifier exchange roles. This behavior illustrates a structured bug fixing/verification process and supports the conclusion that there is no QA team in Eclipse/Platform.
 	
 	In Eclipse/EMF, we found that marking a bug as \VERIFIED\ does not mean that the bug fix was verified. Instead, it means that the fix was made available in a build of the software that is published in the subproject's website\footnote{See \url{http://wiki.eclipse.org/Modeling_PMC_Meeting,_2007-10-16}}.
 
@@ -437,4 +437,6 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 
 \section*{Acknowledgment}
 
-\small{This work is supported by FAPESB (grant BOL0119/2010) and CNPq/INES (grant 573964/2008-4).}
+%\small{
+This work is supported by FAPESB under grant BOL0119/2010 and by CNPq/INES under grant 573964/2008-4.% er wer wer wer we rwe rwe rwe rwe rwe rw erw er wer wer wer wer wer wer wer wer  qwe qwe qwe qwe qwe qwe qwe qw eqwe  qwe qwe qwe qwe q qwe qwe qwe qw e
+%}
