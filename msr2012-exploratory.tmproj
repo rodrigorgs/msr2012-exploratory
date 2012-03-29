@@ -3,28 +3,28 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>contents.tex</string>
+	<string>msr2012-exploratory.tex</string>
 	<key>documents</key>
 	<array>
 		<dict>
 			<key>filename</key>
 			<string>contents.tex</string>
 			<key>lastUsed</key>
-			<date>2012-03-29T00:20:49Z</date>
-			<key>selected</key>
-			<true/>
+			<date>2012-03-29T20:01:49Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>msr2012-exploratory.bib</string>
 			<key>lastUsed</key>
-			<date>2012-03-29T00:20:49Z</date>
+			<date>2012-03-29T19:58:06Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>msr2012-exploratory.tex</string>
 			<key>lastUsed</key>
-			<date>2012-03-29T00:16:45Z</date>
+			<date>2012-03-29T20:01:49Z</date>
+			<key>selected</key>
+			<true/>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
@@ -36,42 +36,42 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>127</integer>
+				<integer>102</integer>
 				<key>line</key>
-				<integer>367</integer>
+				<integer>440</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>348</integer>
+			<integer>421</integer>
 		</dict>
 		<key>msr2012-exploratory.bib</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>1</integer>
+				<integer>38</integer>
 				<key>line</key>
-				<integer>75</integer>
+				<integer>3</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>45</integer>
+			<integer>0</integer>
 		</dict>
 		<key>msr2012-exploratory.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>20</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>337</integer>
+				<integer>353</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>321</integer>
+			<integer>328</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
