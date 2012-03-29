@@ -10,7 +10,7 @@
 			<key>filename</key>
 			<string>contents.tex</string>
 			<key>lastUsed</key>
-			<date>2012-03-28T12:01:24Z</date>
+			<date>2012-03-29T00:20:49Z</date>
 			<key>selected</key>
 			<true/>
 		</dict>
@@ -18,13 +18,13 @@
 			<key>filename</key>
 			<string>msr2012-exploratory.bib</string>
 			<key>lastUsed</key>
-			<date>2012-03-28T12:01:24Z</date>
+			<date>2012-03-29T00:20:49Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>msr2012-exploratory.tex</string>
 			<key>lastUsed</key>
-			<date>2012-02-07T10:51:01Z</date>
+			<date>2012-03-29T00:16:45Z</date>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
@@ -36,74 +36,42 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>3</integer>
+				<integer>127</integer>
 				<key>line</key>
-				<integer>414</integer>
+				<integer>367</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
-			<integer>233</integer>
+			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>404</integer>
+			<integer>348</integer>
 		</dict>
 		<key>msr2012-exploratory.bib</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>34</integer>
+				<integer>1</integer>
 				<key>line</key>
-				<integer>19</integer>
+				<integer>75</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>13</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>30</integer>
-				<key>line</key>
-				<integer>19</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>34</integer>
-				<key>line</key>
-				<integer>19</integer>
-			</dict>
+			<integer>45</integer>
 		</dict>
 		<key>msr2012-exploratory.tex</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>11</integer>
+				<integer>20</integer>
 				<key>line</key>
-				<integer>542</integer>
+				<integer>337</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>506</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>5</integer>
-				<key>line</key>
-				<integer>542</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>11</integer>
-				<key>line</key>
-				<integer>542</integer>
-			</dict>
+			<integer>321</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
@@ -126,6 +94,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<false/>
 	<key>windowFrame</key>
-	<string>{{661, 1}, {570, 777}}</string>
+	<string>{{655, 1}, {570, 777}}</string>
 </dict>
 </plist>
