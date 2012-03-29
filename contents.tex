@@ -23,7 +23,7 @@ Bug repositories have for a long time been used in software projects to support 
 
 % The information contained in bug repositories has been used in order to predict fault-proneness, to unveil developers' roles from data, to characterize transfer of work in software projects, and so on. Also, it has been used to investigate beliefs in software engineering related to software quality, such as the impact of developer turnover and of collective ownership on the occurrence of bugs.
 
-However, mining bug repositories has its own risks. Previous research has identified problems of missing data (e.g., rationale, traceability links between reported bug fixes and source code changes), inaccurate data (e.g., misclassification of bugs) \cite{Aranda2009}, and biased data \cite{Bird2009}. %,Bird2009,Nguyen2010,Ayari2007}.
+However, mining bug repositories has its own risks. Previous research has identified problems of missing data \cite{Arand2009} (e.g., rationale, traceability links between reported bug fixes and source code changes), inaccurate data (e.g., misclassification of bugs) \cite{Antoniol2008}, and biased data \cite{Bird2009}. %,Bird2009,Nguyen2010,Ayari2007}.
 
   In previous research \cite{Souza2011}, we tried to assess the impact of independent verification of bug fixes on software quality, by mining data from bug repositories. 
   We relied on reported verifications tasks, as recorded in bug reports, and interpreted the recorded data according to the documentation for the specific bug tracking system used.
@@ -65,8 +65,8 @@ Figure \ref{fig:bugzilla} shows each status that can be recorded in Bugzilla, al
 
 \begin{figure}[ht]
 	\centering
-		\includegraphics[scale=0.4]{bugzilla.png}
-	\caption{Workflow for Bugzilla. Source: \url{http://www.bugzilla.org/docs/2.18/html/lifecycle.html}.}
+		\includegraphics[width=0.48\textwidth]{bugzilla}
+	\caption{Simplified workflow for Bugzilla. Adapted from \url{http://www.bugzilla.org/docs/2.18/html/lifecycle.html}.}
 	\label{fig:bugzilla}
 \end{figure}
 
@@ -313,7 +313,7 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 			\textbf{\centering Project} & 
 			\MyHead{1.2cm}{\textbf{\centering QA team size}} & 
 			\MyHead{1.6cm}{\textbf{\% of verifications by QA team}} &
-			\MyHead{2.7cm}{\textbf{Distribution of ratio (bugs verified / bugs fixed) per developer}} \\
+			\MyHead{2.7cm}{\textbf{Distribution of ratio (bugs verified / bugs fixed) per developer}\vspace{2mm}} \\
 			\hline
 			\textbf{Eclipse} & & & 
 			   \multirow{6}{*}{\includegraphics[scale=1]{ratio}}\\
@@ -365,7 +365,7 @@ Software verification techniques are classified in static and dynamic \cite{Somm
 		\end{center}
 	\end{table}
 
-	No references to formal verification were found. Regarding static analysis, only 4 references were found; upon inspection, it was found that only one reference (bug report #15242 for NetBeans/Platform) implies the use of a static analysis tool in the verification process.
+	No references to formal verification were found. Regarding static analysis, only 4 references were found; upon inspection, it was found that only one reference (bug report 15242 for NetBeans/Platform) implies the use of a static analysis tool in the verification process.
 
 	In all projects, comments suggest the use of automated testing and code inspection in the verification process, the former technique being more frequently referenced (except in Eclipse/Platform). Evidences of ad hoc testing were found only in Eclipse/Platform, probably due to limitations in the regular expressions.
 
