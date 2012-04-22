@@ -3,14 +3,16 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>msr2012-exploratory.tex</string>
+	<string>contents.tex</string>
 	<key>documents</key>
 	<array>
 		<dict>
 			<key>filename</key>
 			<string>contents.tex</string>
 			<key>lastUsed</key>
-			<date>2012-03-29T20:01:49Z</date>
+			<date>2012-03-29T22:50:02Z</date>
+			<key>selected</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>filename</key>
@@ -22,9 +24,7 @@
 			<key>filename</key>
 			<string>msr2012-exploratory.tex</string>
 			<key>lastUsed</key>
-			<date>2012-03-29T20:01:49Z</date>
-			<key>selected</key>
-			<true/>
+			<date>2012-03-29T22:50:02Z</date>
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
@@ -36,14 +36,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>102</integer>
+				<integer>13</integer>
 				<key>line</key>
-				<integer>440</integer>
+				<integer>67</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
-			<integer>0</integer>
+			<integer>306</integer>
 			<key>firstVisibleLine</key>
-			<integer>421</integer>
+			<integer>55</integer>
 		</dict>
 		<key>msr2012-exploratory.bib</key>
 		<dict>
